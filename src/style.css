@@ -1,0 +1,786 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap');
+:root{
+    --principal:#483FEC;
+    --background:#FFFFFF;
+    --light:rgba(132, 139, 200, 0.18);
+    --text-principal:#1C194D;
+    --color-white:#fff;
+    --color-dark:#111212;
+    --dark:#000000;
+    --text-secund:#7C7575;
+    --back-secund:#C5D1FF;
+    --text-compatible:#0B5C2E;
+    --card-compatible:#03B64D;
+    --back-compatible:#B3FFD1;
+    --text-incompatible:#920a0a;
+    --card-incompatible:#ff0000;
+    --back-compatible:#ffc0c0;
+    
+    --card-border-radius: 2rem;
+    --border-radius-1:0.4rem ;
+    --border-radius-2:0.8rem;
+    --border-radius-3:1.2rem;
+
+    --card-padding:1.8rem;
+    --padding-1: 1.2rem;
+
+    --box-shadow: 0 2rem 3rem var(--light);
+}
+/* TEMAS OBSCUROS - VARIABLES */
+.dark-theme-variables{
+    --background:#181a1e;
+    --color-white:#202528;
+    --color-dark:#ada3cc;
+    --text-secund:#a3bdcc;
+    --dark:#ffffff;
+    --light:rgba(0,0,0,0.4);
+    --box-shadow:0 2rem 3rem var(var(--light));
+}
+
+*{
+    margin:0;
+    padding: 0;
+    outline: 0;
+    appearance: none;
+    border: 0;
+    text-decoration: none !important;
+    list-style: none;
+    box-sizing: border-box;
+}
+html{
+    font-size: 14px;
+}
+body{
+    width: 100%;
+    height: 100vh;
+    font-family: poppins, sans-serif;
+    font-size: 0.88rem;
+    background: var(--background);
+    user-select: none;
+    overflow-x: hidden;
+}
+
+h1{
+    font-weight: 800;
+    font-size: 1.8rem;
+}
+h2{
+    font-size: 1.4rem;
+}
+h3{
+    font-size: 0.87rem;
+}
+h4{
+    font-size: 0.8rem;
+}
+h5{
+    font-size: 0.77rem;
+}
+
+
+.container{
+display: grid;
+width: 100vw;
+margin: 0;
+gap: 1.8rem;
+grid-template-columns: 55% 45%;
+height: 100vh;
+}
+
+/* AuthLayout */
+.cont-img{
+  height: 100%;
+  
+ filter: drop-shadow(0 2rem 3rem rgba(0, 0, 0, 0.25));
+ transition: all 300ms ease;
+}
+.cont-img img{
+object-fit: cover;
+width: 100%;
+height: 100%;
+clip-path: polygon(0 0, 100% 0, 76% 100%, 0% 100%);
+}
+.cont-form {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    padding: 20px;
+    background-color: var(--background);
+    transition: all 300ms ease;
+}
+.cont-form form .head-form{
+    display: inline;
+    text-align:center;
+}
+.cont-form form .head-form h1{
+    text-align: center;
+}
+.cont-form form .head-form p{
+    margin-top: 15px;
+    color: var(--text-principal);
+}
+
+.cont-form form .head-form .line{
+
+    border: solid 1px var(--principal);
+    width: 50%;
+margin: auto;
+
+}
+.cont-form form {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    max-width: 300px;
+}
+.cont-form form .body-form{
+    margin-top: 2rem;
+}
+.cont-form form .body-form input {
+    margin-top: 2rem;
+    margin-bottom: 15px;
+    padding: 10px;
+    border-bottom: 1.5px solid var(--principal);
+    width: 100%;
+}
+.cont-form form .footer-form{
+    margin: auto;
+}
+.cont-form form .footer-form button {
+    padding: 10px 50px;
+    border: none;
+    border-radius: 5px;
+    background-color: var(--principal);
+    color: var(--background);
+    font-size: 16px;
+    cursor: pointer;
+    width: 100%;
+
+}
+
+.cont-form button:hover {
+    
+}
+.alerta{
+    margin-top: 1rem;
+    display: none;
+}
+.alerta .message h5{
+    color: var(--card-incompatible);
+}
+.cont-form .body-form .datos{
+    display: flex;
+    gap: 0.5rem;
+}
+
+/* Fin AuthLayout */
+
+/* FarmaLayout */
+.container-farma{
+    display: grid;
+    width: 100%;
+    margin: 0;
+    gap: 1.8rem;
+    grid-template-columns: 14rem auto 23rem;
+}
+
+small{
+    font-size: 0.75rem;
+}
+.profile-photo{
+    width: 2.8rem;
+    height: 2.8rem;
+    border-radius: 50%;
+    overflow: hidden;
+}
+.text-muted{
+    color: var(--text-secund) ;
+}
+p{
+    color:var(--color-dark);
+}
+aside{
+    height: 100vh;
+    background: var(--principal);
+}
+aside .top{
+    /* background: #FFFFFF; */
+    display: flex;
+    align-items: center !important;
+    justify-content: space-between;
+    margin-top: 1.4rem;
+    color: var(--color-white);
+}
+aside .logo{
+    display: flex;
+    gap: 0.8rem;
+}
+aside .top img{
+    width: 2rem;
+    height: 2rem;
+}
+aside .close{
+    display: none;
+}
+/* MNU */
+aside .sidebar{
+    color: var(--color-white);
+    display: flex;
+    flex-direction: column;
+    height: 86vh;
+    position: relative;top: 3rem;
+}
+aside h3{
+    font-weight: 500;
+}
+aside .sidebar a{
+    display: flex;
+    color: var(--color-white);
+    margin-left: 2rem;
+    gap: 1rem;
+    align-items: center;
+    position: relative;
+    height: 3.7rem;
+    transition: all 300ms ease;
+}
+aside .sidebar a span{
+    font-size: 1.6rem;
+    transition: all 300ms ease;
+}
+aside .sidebar a:last-child{
+    position: absolute;
+    bottom: 2rem;
+    width: 100%;
+}
+aside .sidebar a.active{
+    background: var();
+    color:var();
+    margin-left: 0;
+}
+aside .sidebar a.active::before{
+    content: "";
+    width: 6px;
+    height: 100%;
+    background: var(--background);
+}
+aside .sidebar a.active span{
+    color: var();
+    margin-left: calc(1rem - 3px);
+}
+aside .sidebar a:hover{
+    color:var();
+}
+aside .sidebar a:hover span{
+    margin-left: 1rem;
+}
+    /* MAIN */
+.prueba{
+    border-radius: 25px;
+    margin-top: 1.4rem;
+    padding: 10px ;
+    background: var(--principal);
+}
+main h1{
+    color: var(--dark);
+}
+main .buscador{
+    display:inline-flex;
+    width: 100%;
+    background:var(--light) ;
+    border-radius: var(--border-radius-2);
+    margin-top: 1rem;
+}
+main .buscador label span{
+    color: var(--text-secund);
+    font-size:1.6rem ;
+    position: relative;
+    top: 3px;
+    left: px;
+}
+main .buscador input[type="search"]{
+    width: 100%;
+    background: transparent;
+    color: var(--color-dark);
+    font-size: 1rem;
+    padding: 0.2rem  1rem;
+}
+main .buscador input[type="search"]::-webkit-search-cancel-button{
+color: var(--text-secund);
+}
+main .prueba .insights{
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 1.6rem;
+}
+main .prueba .insights> div{
+background: var(--color-white);
+padding: var(--card-padding);
+/* border-radius: var(--card-border-radius); */
+/* margin-top: 1.2rem; */
+box-shadow: var(--box-shadow);
+transition: all 300ms ease;
+}
+main .prueba .insights>div:nth-child(1){
+    border-top-left-radius: var(--card-border-radius);
+}
+main .prueba .insights>div:nth-child(2){
+    border-top-right-radius: var(--card-border-radius);
+}
+main .prueba .insights >div:hover{
+    box-shadow: none;
+}
+main .prueba .insights>div span, main .prueba .recent-orders> span{
+    background: var(--back-secund);
+    padding: 0.5rem;
+    border-radius: 50%;
+    color:var(--color-white);
+    font-size: 2rem;
+}
+main .prueba .insights>div.income span{
+    background: var(--principal);
+}
+main .prueba .insights>div.expenses span{
+    background: var(--principal);
+}
+main .prueba .insights>div.sales span{
+    background: var(--principal);   
+}
+main .prueba .recent-orders> span{
+    background: var(--card-compatible);   
+}
+main .prueba .insights>div .middle{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+main .prueba .recent-orders>.middle{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+main .prueba .insights h3{
+    margin: 1rem 0 0.6rem;
+    font-size: 1rem;
+    color: var(--dark);
+}
+main .prueba .insights h1{
+    color: var(--dark);
+}
+main .prueba .insights .progreso{
+    position: relative;
+    width: 92px;
+    height: 92px;
+    border-radius: 50%;
+}
+main .prueba .insights svg{
+    width: 7rem;
+    height: 7rem;
+}
+main .prueba .insights svg circle{
+    fill: none;
+    stroke: var(--principal);
+    stroke-width: 14;
+    stroke-linecap: round;
+    transform: translate(5px,5px);
+    stroke-dasharray: 110;
+    stroke-dashoffset: 92;
+}
+main .prueba .insights .sales svg circle{
+    stroke-dashoffset: -30;
+    stroke-dasharray: 200;
+}
+main .prueba .insights .expenses svg circle{
+    stroke-dashoffset: 20;
+    stroke-dasharray: 90;   
+}
+main .prueba .insights .income svg circle{
+    stroke-dasharray: 110;
+    stroke-dashoffset: 35;
+}
+main .prueba .insights .progreso .number{
+    position: absolute;
+    top: 5px;
+    left: 0;
+    height: 100%;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+main .insights small{
+    margin-top:1.6rem;
+    display: block;
+}
+/* Resultado */
+main .prueba .recent-orders{
+background: var(--color-white);
+padding: var(--card-padding);
+/* border-radius: var(--card-border-radius); */
+border-bottom-left-radius: var(--card-border-radius);
+border-bottom-right-radius: var(--card-border-radius) ;
+margin-top: 1rem;
+box-shadow: var(--box-shadow);
+transition: all 300ms ease;
+}
+main .prueba .recent-orders:hover{
+    box-shadow: none;
+}
+/* talbla */
+/* main  .prueba .recent-orders{
+    margin-top: 2rem !important;
+} */
+main .prueba .recent-orders h2{
+    margin-bottom: 0.8rem ;
+    color: var(--dark);
+}
+/*main .prueba .recent-orders table{
+    background: var(--color-white);
+    width: 100%;
+    border-radius: var(--card-border-radius);
+    padding: var(--card-padding);
+    text-align: center;
+    box-shadow: var(--box-shadow);
+    transition: all 300ms ease;
+}
+ main .recent-orders table thead{
+    color: var(--dark);
+} 
+main .prueba .recent-orders table:hover{
+    box-shadow: none;
+}
+ main table tbody td{
+    height: 2.5rem;
+    border-bottom: 1px solid var(--text-secund);
+    color: var(--text-dark);
+}
+main table tbody tr:last-child td{
+    border: none;
+} */
+main .prueba .recent-orders a{
+    text-align: center;
+    display: block;
+    margin:  1rem auto;
+    color: var(--principal);
+}
+/* right */
+.right{
+    margin-top: 1.4rem;
+}
+.right .top{
+    display: flex;
+    justify-content: end;
+    gap: 2rem;
+    background: var(--background);
+}
+.right .top button{
+    display: none;
+}
+.right .theme-toggler{
+    background: var(--background);
+    display:flex;
+    justify-content: space-between;
+    align-items: center;
+    height: 1.6rem;
+    width: 4.2rem;
+    cursor:pointer;
+    border-radius: var(--border-radius-1);
+}
+.right .theme-toggler span{
+    font-size: 1.2rem;
+    width: 50%;
+    height: 100%;
+    display:flex;
+    align-items: center;
+    justify-content: center;
+}
+.right .theme-toggler span.active{
+    background:  var(--principal);
+    color:white;
+    border-radius: var(--border-radius-1);
+}
+.right .top .profile{
+    display: flex;
+    gap: 2rem;
+    text-align: right;
+    
+}
+
+/* RECENT UPDATES */
+.right .recent-updates{
+    margin-top: 1rem;
+}
+.right .recent-updates h2{
+    margin-bottom: 0.8rem;
+}
+.right .recent-updates .updates{
+    background: var(--background);
+    padding: var(--card-padding);
+    border-radius: var(--card-border-radius);
+    box-shadow: var(--box-shadow);
+    transition: all 300ms ease;
+}
+
+.right .recent-updates .updates:hover{
+    box-shadow: none;
+}
+.right .recent-updates .updates .update{
+    display:grid;
+    grid-template-columns: 2.6rem auto;
+    gap :1rem;
+    margin-bottom: 1rem;
+}
+.right .sales-analytics{
+    margin-top: 2rem;
+}
+.right .sales-analytics h2{
+    margin-bottom: 0.8rem;
+    color: var(--dark);
+}
+.right .sales-analytics .item{
+    background: var(--background);
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    margin-bottom: 0.7rem;
+    padding: 1.4rem var(--card-padding);
+    border-radius: var(--border-radius-3);
+    box-shadow: var(--box-shadow);
+    transition: all 300ms ease;
+    color: var(--dark);
+}
+.right .sales-analytics .item:hover{
+    box-shadow: none;
+}
+.right .sales-analytics .item .right{
+    display: flex;
+    justify-content: space-between;
+    align-items: start;
+    margin: 0;
+    width: 100%;
+}
+.right .sales-analytics .item .icon{
+    padding: 0.6rem;
+    color: var(--color-white);
+    border-radius: 50%;
+    background: var(--principal);
+    display: flex;
+}
+.right .sales-analytics .item.offline .icon{
+    background: var(--card-incompatible);
+}
+.right .sales-analytics .item.customers .icon{
+    background: var(--card-compatible);
+}
+.right .sales-analytics .add-product{
+    background-color: transparent;
+    border:2px dashed var(--text-principal);
+    color: var(--text-principal);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+.right .sales-analytics .add-product div{
+    display: flex;
+    align-items: center;
+    gap:0.6rem;
+}
+.right .sales-analytics .add-product div h3{
+    font-weight: 600;
+}
+
+/* MEDIA QUERIES */
+@media screen and (max-width:1200px){
+    .container-farma{
+        width: 94%;
+        grid-template-columns: 7rem auto 20rem;
+        /* grid-template-columns: 7rem 51rem 23rem; */
+    }
+
+
+    aside{
+        height: auto;
+    }
+    aside .logo h2{
+        display: none;
+    }
+    aside .sidebar h3{
+        display: none;
+    }
+    aside .sidebar a{
+        width: 5.6rem;
+    }
+    aside .sidebar a:last-child{
+        position: relative;
+        margin-top: 1.8rem;
+    }
+    main .prueba{
+        margin-bottom: 1rem;
+    }
+    main .prueba .insights{
+        grid-template-columns: 1fr;
+        gap:0;
+        row-gap: 1rem;
+    }
+    main .prueba .insights>div:nth-child(1){
+        border-top-left-radius: var(--card-border-radius);
+        border-top-right-radius: var(--card-border-radius);
+    }
+    main .prueba .insights>div:nth-child(2){
+        border-radius: 0;
+    }
+    main .prueba .recent-orders{
+        /* width: 94%;
+        position: absolute;
+        left: 50%;
+        transform:  translateX(-50%);
+        margin: 2rem 0 0 8.8rem; */
+    }
+    /* main .prueba .recent-orders table{
+        width: 83vw;
+        
+    }
+    main table thead tr th:last-child,
+    main table thead tr th:first-child{
+        display: none;
+    }
+    main table tbody tr td:last-child,
+    main table tbody tr td:first-child{
+        display: none;
+    } */
+}
+/* MEDIA QUERIES PARA TABLETS yCELUS PA*/
+@media screen and (max-width:768px) {
+    .container-farma{
+        width: 100%;
+        grid-template-columns: 1fr;
+    }
+    aside{
+    position: fixed;
+    left:-100%;
+    background: var(--principal);
+    width: 18rem;
+    z-index: 3;
+    box-shadow: 1rem 3 ream 4 ream var(--light);
+    height: 100vh;
+    padding-right: var(--card-padding);
+    display: none;
+    animation: showMenu 400ms ease forwards;
+    }
+    @keyframes showMenu {
+        to{
+            left: 0;
+        }
+    }
+    aside .logo{
+        margin-left: 1rem;
+    }
+    aside .logo h2{
+        display: inline;
+    }
+    aside .sidebar h3{
+        display: inline;
+    }
+    aside .sidebar a{
+        width: 100%;
+        height: 3.4rem;
+    }
+    aside .sidebar a:last-child{
+        position: absolute;
+        bottom: 5rem;
+    }
+    aside .close{
+        display: inline-block;
+        cursor: pointer;
+    }
+
+    main{
+        margin-top: 8rem;
+        padding: 0 1rem;
+
+    }
+    main .insights>div:nth-child(1){
+        border-top-right-radius: var(--card-border-radius) ;
+    }
+    main .insights>div:nth-child(2){
+        margin-top: 1rem;
+        border-top-right-radius: 0 !important;
+    }
+    main .prueba .recent-orders{
+        position :relative;
+        margin: 3rem 0 0 0;
+        width: 100%;
+    }
+    main .recent-orders table{
+        width: 100%;
+        margin: 0;
+    }
+    .right{
+        width: 94%;
+        margin: 0 auto 4rem;
+    }
+    .right .top{
+        position: fixed;
+        top:0;
+        left: 0;
+        align-items: center;
+        padding: 0 0.8rem;
+        height: 4.6rem;
+        background: var(--background);
+        width: 100%;
+        margin: 0;
+        z-index: 2;
+        box-shadow: 0 1rem 1rem var(--light);
+    }
+    .right .top .theme-toggler{
+        width: 4.4rem;
+        position: absolute;
+        left: 66%;
+    }
+    .right .profile .info{
+        display: none;
+    }
+    .right .top button{
+        display: inline-block;
+        background: transparent;
+        cursor: pointer;
+        color: var(--text-principal);
+        position: absolute;
+        left: 1rem;
+    }
+    .right .top button span{
+        font-size: 2rem;
+    }
+}
+
+
+/* Fin FarmaLayout */
+
+
+/*REsposive*/
+@media screen and (max-width:800px){
+    .container-farma{
+        width: 100%;
+        grid-template-columns: 1fr;
+        background: var(--principal) 
+        !important;
+    }
+    .cont-img{
+        display: none;
+    }
+    .cont-form{
+        width: 90%;
+        height: 70%;
+        margin: auto;
+        border-radius: var(--border-radius-3);
+        background: var(--background);
+        padding: 2rem 1rem;
+    }
+}
+@media screen and (max-width:550){
+
+}
+
+
+
