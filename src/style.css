@@ -758,9 +758,9 @@ main .prueba .recent-orders a{
 /* Fin FarmaLayout */
 
 
-/*REsposive*/
+/*REsposive login and register*/
 @media screen and (max-width:800px){
-    .container-farma{
+    .container{
         width: 100%;
         grid-template-columns: 1fr;
         background: var(--principal) 
