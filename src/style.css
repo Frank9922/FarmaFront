@@ -46,7 +46,7 @@
     text-decoration: none !important;
     list-style: none;
     box-sizing: border-box;
-}
+}/* abc */
 html{
     font-size: 14px;
 }
@@ -758,9 +758,9 @@ main .prueba .recent-orders a{
 /* Fin FarmaLayout */
 
 
-/*REsposive*/
+/*REsposive login and register*/
 @media screen and (max-width:800px){
-    .container-farma{
+    .container{
         width: 100%;
         grid-template-columns: 1fr;
         background: var(--principal) 

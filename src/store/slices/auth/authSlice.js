@@ -5,7 +5,7 @@ export const authSlice = createSlice({
     name: 'auth',
     initialState: {
         id: null,
-        estado: estados.noAutenticado,
+        estado: estados.autenticado,
         displayName: null,
         email: null,
         photoUrl: null
@@ -24,7 +24,7 @@ export const authSlice = createSlice({
         },
         logout: (state) => {
             state.id = null,
-            state.estado = estados.noAutenticado,
+            state.estado = estados.autenticado,
             state.displayName = null,
             state.email = null,
             state.photoUrl = null
