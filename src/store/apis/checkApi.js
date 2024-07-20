@@ -9,7 +9,7 @@ export const checkApi = createApi({
             const token = localStorage.getItem('token');
             headers.set('Content-Type', 'application/json');
             headers.set('Accept', 'application/json');
-
+            headers.set('X-Secret-Key', 'xdddddddd');
             if(token && token.length > 0) {
                 const fulltoken= token.replaceAll('"', '')
                 headers.set('Authorization', `Bearer ${fulltoken}`)
