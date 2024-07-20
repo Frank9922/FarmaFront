@@ -1,10 +1,18 @@
 import { Link } from "react-router-dom"
 import { AuthLayout } from "../../farma/layout/AuthLayout"
+import { motion } from "framer-motion"
+
+
 
 export const LoginPage = () => {
   return (
     <AuthLayout>
-      <>
+      <motion.div
+    initial={{ x: "20%", opacity: 0 }}
+    animate={{ x: 0, opacity: 1 }}
+    exit={{ x: "-20%", opacity: 0, transition: { duration: 0.2 } }}
+    transition={{ delay: 0, duration: 0.2 }}
+      >
       <form>
                 <div className="head-form">
                     <h1>Inicio de Sesion</h1>
@@ -30,7 +38,7 @@ export const LoginPage = () => {
                     <h5>Usuario o contraseña icorrectos</h5>
                 </div>
             </div>
-      </>
+      </motion.div>
     </AuthLayout>
   )
 }
