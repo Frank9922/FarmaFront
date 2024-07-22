@@ -81,7 +81,7 @@ export const FarmaLayout = () => {
        {/* FIN DE EXPENSES  */}
     </div>
     <div className="recent-orders">
-      <h2>Resultado</h2>
+      <h2>Resulado</h2>
         <span className="material-symbols-outlined">monitoring</span>
         <div className="middle">
           <div className="left">
