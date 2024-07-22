@@ -9,12 +9,16 @@
     --dark:#000000;
     --text-secund:#7C7575;
     --back-secund:#C5D1FF;
-    --text-compatible:#0B5C2E;
-    --card-compatible:#03B64D;
-    --back-compatible:#B3FFD1;
-    --text-incompatible:#920a0a;
-    --card-incompatible:#ff0000;
-    --back-compatible:#ffc0c0;
+    --text-compatible:#03b64d;
+    --card-compatible:#b3ffd1;
+    --text-incompatible:#ff0000;
+    --card-incompatible:#ffc0c0;
+    --text-variable:#d6d300;
+    --card-variable:#e7ff88;
+    --text-noprobado:#0092d6;
+    --card-noprobado:#b9e8fe;
+    --text-incierto:#656565;
+    --card-incierto:#dcdcdc;
     
     --card-border-radius: 2rem;
     --border-radius-1:0.4rem ;
@@ -330,12 +334,13 @@ main .prueba .insights>div:nth-child(2){
 main .prueba .insights >div:hover{
     box-shadow: none;
 }
-main .prueba .insights>div span, main .prueba .recent-orders> span{
+main .prueba .insights>div span, main .prueba .recent-orders .head-result> span{
     background: var(--back-secund);
     padding: 0.5rem;
     border-radius: 50%;
     color:var(--color-white);
     font-size: 2rem;
+    display: none;
 }
 main .prueba .insights>div.income span{
     background: var(--principal);
@@ -346,7 +351,7 @@ main .prueba .insights>div.expenses span{
 main .prueba .insights>div.sales span{
     background: var(--principal);   
 }
-main .prueba .recent-orders> span{
+main .prueba .recent-orders .head-result> span{
     background: var(--card-compatible);   
 }
 main .prueba .insights>div .middle{
@@ -358,6 +363,7 @@ main .prueba .recent-orders>.middle{
     display: flex;
     align-items: center;
     justify-content: space-between;
+    gap: 1rem;
 }
 main .prueba .insights h3{
     margin: 1rem 0 0.6rem;
@@ -415,7 +421,6 @@ main .insights small{
 }
 /* Resultado */
 main .prueba .recent-orders{
-background: var(--color-white);
 padding: var(--card-padding);
 /* border-radius: var(--card-border-radius); */
 border-bottom-left-radius: var(--card-border-radius);
@@ -424,40 +429,52 @@ margin-top: 1rem;
 box-shadow: var(--box-shadow);
 transition: all 300ms ease;
 }
+main .prueba .compatible{
+    background: var(--card-compatible);
+}
+main .prueba .incompatible{
+    /* display: none; */
+    background: var(--card-incompatible);
+}
+main .prueba .variable{
+    /* display: none; */
+    background: var(--card-variable);
+}
+main .prueba .noprobado{
+    /* display: none; */
+    background: var(--card-noprobado);
+}
+main .prueba .incierto{
+    /* display: none; */
+    background: var(--card-incierto);
+}
 main .prueba .recent-orders:hover{
     box-shadow: none;
 }
-/* talbla */
-/* main  .prueba .recent-orders{
-    margin-top: 2rem !important;
-} */
-main .prueba .recent-orders h2{
+main .prueba .recent-orders .head-result h2{
     margin-bottom: 0.8rem ;
-    color: var(--dark);
-}
-/*main .prueba .recent-orders table{
-    background: var(--color-white);
-    width: 100%;
-    border-radius: var(--card-border-radius);
-    padding: var(--card-padding);
+    color: black;
     text-align: center;
-    box-shadow: var(--box-shadow);
-    transition: all 300ms ease;
 }
- main .recent-orders table thead{
-    color: var(--dark);
-} 
-main .prueba .recent-orders table:hover{
-    box-shadow: none;
+main .prueba .recent-orders  .head-result span{
+    color: white;
 }
- main table tbody td{
-    height: 2.5rem;
-    border-bottom: 1px solid var(--text-secund);
-    color: var(--text-dark);
+
+main .prueba .compatible .middle .left h1{
+    color: var(--text-compatible);
 }
-main table tbody tr:last-child td{
-    border: none;
-} */
+main .prueba .incompatible .middle .left h1{
+    color: var(--text-incompatible);
+}
+main .prueba .variable .middle .left h1{
+    color: var(--text-variable);
+}
+main .prueba .incierto .middle .left h1{
+    color: var(--text-incierto);
+}
+main .prueba .noprobado .middle .left h1{
+    color: var(--text-noprobado);
+}
 main .prueba .recent-orders a{
     text-align: center;
     display: block;
