@@ -24,8 +24,8 @@ export const FarmaLayout = () => {
               <h3>Farmacos</h3>
             </a>
             <a href="#">
-              <span className="material-symbols-outlined"></span>
-              <h3>Pefil</h3>
+              <span className="material-symbols-outlined">logout</span>
+              <h3>Salir</h3>
             </a>
           </div>
       </aside>
