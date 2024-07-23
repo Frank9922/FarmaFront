@@ -50,7 +50,7 @@
     text-decoration: none !important;
     list-style: none;
     box-sizing: border-box;
-}/* abc */
+}
 html{
     font-size: 14px;
 }
@@ -340,6 +340,8 @@ main .prueba .insights>div span, main .prueba .recent-orders .head-result> span{
     border-radius: 50%;
     color:var(--color-white);
     font-size: 2rem;
+}
+main .prueba .recent-orders .head-result> span{
     display: none;
 }
 main .prueba .insights>div.income span{
@@ -419,7 +421,47 @@ main .insights small{
     margin-top:1.6rem;
     display: block;
 }
+/* boton-prueba */
+main .prueba .buscar{
+    margin-top: 1rem;
+}
+main .prueba .buscar button{
+    background: var(--color-white);
+    color: var(--dark);
+    width: 100%;
+    padding: .5rem 0px;
+    border-radius: var(--border-radius-2);
+    font-weight: 600;
+    font-size: 1.2rem;
+    transition: all 0.25s ease;
+}
+main .prueba .buscar button:hover{
+    cursor: pointer;
+}
+main .prueba .buscar button:active{
+    letter-spacing: 2px;
+}
+main .prueba .buscar button:hover{
+  color:white;
+  background: var(--principal);
+}
+.spinner{
+    margin: auto;
+    width: 25px;
+    height: 25px;
+    border: 5px solid rgba(0, 0, 0, 0.1);
+    border-top: 5px solid #3498db;
+    border-radius: 50%;
+    animation: spin 1s linear infinite;
+    display: none;
+  }
+  
+  @keyframes spin {
+    0% { transform: rotate(0deg); }
+    100% { transform: rotate(360deg); }
+  }
 /* Resultado */
+
 main .prueba .recent-orders{
 padding: var(--card-padding);
 /* border-radius: var(--card-border-radius); */
@@ -428,6 +470,7 @@ border-bottom-right-radius: var(--card-border-radius) ;
 margin-top: 1rem;
 box-shadow: var(--box-shadow);
 transition: all 300ms ease;
+display: none;
 }
 main .prueba .compatible{
     background: var(--card-compatible);

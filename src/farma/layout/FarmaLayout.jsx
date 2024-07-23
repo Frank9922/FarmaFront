@@ -80,6 +80,9 @@ export const FarmaLayout = () => {
       </div>
        {/* FIN DE EXPENSES  */}
     </div>
+    <div className="buscar">
+      <button>Comparar</button>
+    </div>
     <div className="recent-orders compatible">
       <div className="head-result">
         <span className="material-symbols-outlined">monitoring</span>
