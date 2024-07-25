@@ -24,8 +24,8 @@ export const FarmaLayout = () => {
               <h3>Farmacos</h3>
             </a>
             <a href="#">
-              <span className="material-symbols-outlined"></span>
-              <h3>Pefil</h3>
+              <span className="material-symbols-outlined">logout</span>
+              <h3>Salir</h3>
             </a>
           </div>
       </aside>
@@ -79,6 +79,9 @@ export const FarmaLayout = () => {
         <small className="text-muted">?</small>
       </div>
        {/* FIN DE EXPENSES  */}
+    </div>
+    <div className="buscar">
+      <button>Comparar</button>
     </div>
     <div className="recent-orders compatible">
       <div className="head-result">
