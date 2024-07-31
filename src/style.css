@@ -587,9 +587,13 @@ main .prueba .recent-orders a{
 }
 .right .recent-updates .updates .update{
     display:grid;
-    grid-template-columns: 2.6rem auto;
-    gap :1rem;
+    grid-template-columns: 1.8rem auto;
+    gap :0.2rem;
     margin-bottom: 1rem;
+    cursor: pointer;
+}
+.right .recent-updates .updates .update span{
+    color: var(--principal);
 }
 .right .sales-analytics{
     margin-top: 2rem;
