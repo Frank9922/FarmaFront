@@ -7,7 +7,7 @@ export const FarmaLayout = () => {
         <div className="top">
           <div className="logo">
             <img src="log3-removebg-preview.png" alt="" />
-            <h2 className=""><span className="danger">LOGO</span></h2>
+            <h2 className=""><span className="danger">FarmaCheck</span></h2>
           </div>
           <div className="close" id="close-btn">
             <span className="material-symbols-outlined">close</span>
@@ -34,7 +34,7 @@ export const FarmaLayout = () => {
 
 <main>
   <div className="search">
-    <h1>Dhasboard</h1>
+    <h1>Comparar</h1>
     <div className="buscador">
       <label ><span className="material-symbols-outlined">search</span></label>
       <input type="search" name="search" id="search" placeholder="Busca un farmaco ..." />
@@ -42,6 +42,10 @@ export const FarmaLayout = () => {
   </div>
   <div className="prueba">
     <div className="insights">
+      <div class="nada">
+        <h3>Click aqui para Buscar un Farmaco</h3>
+        <span class="material-symbols-outlined pulse"></span>
+      </div>
       <div className="sales">
         <span className="material-symbols-outlined">mixture_med</span>
         <div className="middle">
@@ -56,7 +60,9 @@ export const FarmaLayout = () => {
             </div>
           </div>
         </div>
-        <small className="text-muted">eliminar</small>
+        <div class="close-farm" id="close-farm-btn">
+          <span class="material-symbols-outlined">close</span>
+        </div>
       </div>
        {/* FIN DE SALES  */}
       <div className="expenses">
@@ -67,16 +73,16 @@ export const FarmaLayout = () => {
             <h1>Farmaco B</h1>
           </div>
           <div className="progreso">
-             <svg>
-              <circle cx="38" cy="38" r="36"></circle>
-            </svg> 
+
             Informacion del Farmaco B
             <div className="number">
               <p>50%</p>
             </div>
           </div>
         </div>
-        <small className="text-muted">?</small>
+        <div class="close-farm" id="close-farm-btn">
+          <span class="material-symbols-outlined">close</span>
+        </div>
       </div>
        {/* FIN DE EXPENSES  */}
     </div>
@@ -126,33 +132,29 @@ export const FarmaLayout = () => {
   <div className="recent-updates">
     <h2>Busquedas Recientes</h2>
       <div className="updates">
-        <div className="update">
-          <div className="profile-photo"><img src="perfil.jpg" alt=""/></div>
+      <div className="update">
+          <span className="material-symbols-outlined">youtube_searched_for</span>
           <div className="message">
-            <p><b>TuVieja</b>Lorem ipsum dolor, sit amet. Temporibus impedit eius
-               nulla ut quod cupiditate est,</p>
+            <p><b>Farmaco A</b>  + <b>Farmaco B</b></p>
               <small className="text-muted">2 hace 2 min</small>
           </div>
         </div>
         <div className="update">
-          <div className="profile-photo"><img src="perfil.jpg" alt=""/></div>
+          <span className="material-symbols-outlined">youtube_searched_for</span>
           <div className="message">
-            <p><b>TuVieja</b>Lorem ipsum dolor, sit amet. Temporibus impedit eius
-               nulla ut quod cupiditate est,</p>
+            <p><b>Farmaco A</b>  + <b>Farmaco B</b></p>
               <small className="text-muted">2 hace 2 min</small>
           </div>
         </div>
         <div className="update">
-          <div className="profile-photo"><img src="perfil.jpg" alt=""/></div>
+          <span className="material-symbols-outlined">youtube_searched_for</span>
           <div className="message">
-            <p><b>TuVieja</b>Lorem ipsum dolor, sit amet. Temporibus impedit eius
-               nulla ut quod cupiditate est,</p>
+            <p><b>Farmaco A</b>  + <b>Farmaco B</b></p>
               <small className="text-muted">2 hace 2 min</small>
           </div>
         </div>
      
       </div>
-    
   </div>
 </div>
      </div>
