@@ -730,9 +730,9 @@ main .prueba .recent-orders a{
     }
 
 
-    aside{
+    /* aside{
         height: ;
-    }
+    } */
     aside .logo h2{
         display: none;
     }
