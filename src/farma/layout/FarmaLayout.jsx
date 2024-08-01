@@ -42,6 +42,10 @@ export const FarmaLayout = () => {
   </div>
   <div className="prueba">
     <div className="insights">
+      <div class="nada">
+        <h3>Click aqui para Buscar un Farmaco</h3>
+        <span class="material-symbols-outlined pulse"></span>
+      </div>
       <div className="sales">
         <span className="material-symbols-outlined">mixture_med</span>
         <div className="middle">
@@ -56,7 +60,9 @@ export const FarmaLayout = () => {
             </div>
           </div>
         </div>
-        <small className="text-muted">eliminar</small>
+        <div class="close-farm" id="close-farm-btn">
+          <span class="material-symbols-outlined">close</span>
+        </div>
       </div>
        {/* FIN DE SALES  */}
       <div className="expenses">
@@ -74,7 +80,9 @@ export const FarmaLayout = () => {
             </div>
           </div>
         </div>
-        <small className="text-muted">?</small>
+        <div class="close-farm" id="close-farm-btn">
+          <span class="material-symbols-outlined">close</span>
+        </div>
       </div>
        {/* FIN DE EXPENSES  */}
     </div>
