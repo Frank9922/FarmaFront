@@ -23,17 +23,16 @@ export const checkApi = createApi({
     
         getCompa: builder.query({
             query: (args) => {
-
-                const [farma1, farma2 ] = args
+                const {farma1, farma2 } = args
 
                 return {
-                    url: `api/comparar-farmacos/${farma1.id}/${farma2.id}`
+                    url: `/comparar-farmacos/${farma1}/${farma2}`
                 }
             }
         }),
 
         getFarmacos: builder.query({
-            query: () => `api/farmacos`,
+            query: () => `/farmacos`,
           }),
 
     })

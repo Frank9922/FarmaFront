@@ -2,41 +2,37 @@ import axios from "axios";
 import { checkingCredentials, login, logout } from "../../store/slices/auth";
 import { useDispatch } from "react-redux";
 import { useEffect } from "react";
-import { api } from "../../api/api";
-import { useNavigate } from "react-router-dom";
 
 
 
 export const useCheckAuth = () => {
 
   const dispatch = useDispatch();
-  const navigate = useNavigate()
-  const token = localStorage.getItem('token');
+  const token = '34|1MVyuKHCz5dNZiBV0pSvgOzOGkNXRN2lrgMwUshXce48a4d8';
   useEffect(() => {
 
     dispatch(checkingCredentials());
 
+    const fetchData = async () => {
+
       if (!token) {
-        dispatch(logout());
+        return dispatch(logout());
       }
 
-      api.get('/api/user', {
-        headers: {
+      try {
+        const response = await axios.get(import.meta.env.VITE_BACKEND_URL + '/user', {
+          headers: {
             Authorization: `Bearer ${token}`
-        }
-    })
-    .then((response) => {
-    dispatch(login(response.data.user));
-    return navigate('/compatibilidad');
-    })
+          }
+        });
+        dispatch(login(response.data.user));
+      } catch (error) {
+        dispatch(logout());
+    } 
+    };
 
-    .catch((error) => {
-        
-     dispatch(logout())
+    fetchData();
+  }, [dispatch,]); 
 
-    })
-
-
-    }, []);
-
-}
+  return null; 
+};

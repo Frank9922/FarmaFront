@@ -5,15 +5,13 @@ export const authSlice = createSlice({
     name: 'auth',
     initialState: {
         id: null,
-        estado: estados.chequeando,
+        estado: estados.autenticado,
         displayName: null,
         email: null,
-        photoUrl: null,
-        errorResponse: null,
+        photoUrl: null
     },  
     reducers: {
         checkingCredentials: (state) => {
-            state.errorResponse = null,
             state.estado = estados.chequeando
         },
 
@@ -22,17 +20,11 @@ export const authSlice = createSlice({
             state.estado = estados.autenticado
             state.displayName = payload.name
             state.email = payload.email
-            state.photoUrl = payload.profile_picture
+            state.photoUrl = payload.photoUrl
         },
-
-        errorResponse: (state, {payload}) => {
-            state.estado = estados.noAutenticado,
-            state.errorResponse = payload
-        },
-
-        logout: (state, ) => {
+        logout: (state) => {
             state.id = null,
-            state.estado = estados.noAutenticado,
+            state.estado = estados.autenticado,
             state.displayName = null,
             state.email = null,
             state.photoUrl = null
@@ -42,4 +34,4 @@ export const authSlice = createSlice({
 
 
 // Action creators are generated for each case reducer function
-export const { login, logout, checkingCredentials, errorResponse } = authSlice.actions;
+export const { login, logout, checkingCredentials } = authSlice.actions;
