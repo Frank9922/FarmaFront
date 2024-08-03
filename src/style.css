@@ -398,7 +398,7 @@ main .prueba .insights> div{
 main .prueba .insights>div:nth-child(1){
     border-top-left-radius: var(--card-border-radius);
 }
-main .prueba .insights>div:nth-child(2){
+main .prueba .insights>div:nth-child(3){
     border-top-right-radius: var(--card-border-radius);
 }
 main .prueba .insights >div:hover{
@@ -470,6 +470,7 @@ main .prueba .insights h1{
     color: var(--dark);
 }
 main .prueba .insights .progreso{
+    color: var(--color-dark);
     position: relative;
     width: 92px;
     height: 92px;
@@ -514,6 +515,70 @@ main .prueba .insights .progreso .number{
 main .insights small{
     margin-top:1.6rem;
     display: block;
+}
+main .prueba .insights .sales,
+main .prueba .insights .expenses{
+    position: relative;
+}
+main .prueba .insights .sales .close-farm,
+main .prueba .insights .expenses .close-farm{
+    position: absolute;
+    top: 0;
+    right: 0;
+  }
+  main .prueba .insights .sales .close-farm span,
+  main .prueba .insights .expenses .close-farm span{
+    padding: 0;
+    font-size: 1.5rem;
+    margin-top: 0.5rem;
+    margin-right: 1rem;
+    cursor: pointer;
+    background: none;
+    color: var(--text-incierto);
+  }
+  /* //inicial// */
+  main .prueba .insights .sales{
+    display: none;
+}
+
+main .prueba .insights .nada{ 
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+ 
+ 
+ }
+ main .prueba .insights .nada h3{
+ color: var(--text-principal);
+ }
+ main .prueba .insights .nada span{
+     background-color: var(--principal);
+ }
+ main .prueba .insights .nada span::after{
+     content: "ads_click";
+     transition: all 300ms ease;
+     cursor: pointer;
+ }
+ main .prueba .insights .nada .pulse{
+    transform: scale(1);
+	animation: pulse 2s infinite;
+ }
+ @keyframes pulse {
+	0% {
+		transform: scale(0.95);
+		box-shadow: 0 0 0 0  rgba(161, 177, 255, 1);
+	}
+
+	70% {
+		transform: scale(1);
+		box-shadow: 0 0 0 10px rgba(197, 209, 255, 1);
+	}
+
+	100% {
+		transform: scale(0.95);
+		box-shadow: 0 0 0 0 rgba(223, 230, 255, 1);
+	}
 }
 /* boton-prueba */
 main .prueba .buscar{
@@ -677,7 +742,9 @@ main .prueba .recent-orders a{
     justify-content: end;
     align-items: center;
     gap: 2rem;
+
     background: var(--background);
+
 }
 .right .top button{
     display: none;
@@ -722,6 +789,7 @@ main .prueba .recent-orders a{
 }
 .right .recent-updates h2{
     margin-bottom: 0.8rem;
+    color: var(--dark);
 }
 .right .recent-updates .updates{
     background: var(--background);
@@ -736,9 +804,13 @@ main .prueba .recent-orders a{
 }
 .right .recent-updates .updates .update{
     display:grid;
-    grid-template-columns: 2.6rem auto;
-    gap :1rem;
+    grid-template-columns: 1.8rem auto;
+    gap :0.2rem;
     margin-bottom: 1rem;
+    cursor: pointer;
+}
+.right .recent-updates .updates .update span{
+    color: var(--principal);
 }
 .right .sales-analytics{
     margin-top: 2rem;
@@ -802,15 +874,15 @@ main .prueba .recent-orders a{
 /* MEDIA QUERIES */
 @media screen and (max-width:1200px){
     .container-farma{
-        width: 94%;
-        grid-template-columns: 7rem auto 20rem;
+        width: 100%;
+        grid-template-columns: 7rem auto 18rem;
         /* grid-template-columns: 7rem 51rem 23rem; */
     }
 
 
-    aside{
-        height: auto;
-    }
+    /* aside{
+        height: ;
+    } */
     aside .logo h2{
         display: none;
     }
@@ -924,6 +996,9 @@ main .prueba .recent-orders a{
     main .recent-orders table{
         width: 100%;
         margin: 0;
+    }
+    main .prueba .insights .nada span::after{
+        content: "touch_app";
     }
     .right{
         width: 94%;

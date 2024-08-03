@@ -18,17 +18,14 @@ export const FarmaLayout = ( {children} ) => {
     <div className="container-farma">
 
         <NavBar />
-
-          <main>
-
+       
+  
             {
               children
             }
-          
-          </main>
-
+         
+       
         <RightComponent />
-     </div>
 
      </motion.div>
 
