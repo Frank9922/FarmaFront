@@ -1,9 +1,29 @@
 import PropTypes from 'prop-types';
+import { motion } from "framer-motion"
+import { useLayoutEffect, useState } from 'react';
 
 
-export const AuthLayout = ( {children}) => {
+export const AuthLayout = ( { children }) => {
+
+  const [isFirstRender, setIsFirstRender] = useState(true);
+
+  useLayoutEffect(() => {
+    setIsFirstRender(false);
+  }, [])
+
+  const variants = {
+    initial: isFirstRender ? { opacity: 0 } : {},
+    animate: { opacity: 1 },
+    exit: { transition: { duration: 0.4 } },
+  };
 
   return (
+    <motion.div
+    variants={variants}
+    animate="animate"
+    exit="exit"
+    transition={{ duration: 0.4}}
+    >
 
     <main>
 
@@ -19,11 +39,12 @@ export const AuthLayout = ( {children}) => {
       
     </div> 
     </main>
+    </motion.div>
 
   )
 
 }
 
 AuthLayout.propTypes = {
-    children: PropTypes.elementType
+    children: PropTypes.object
   }
