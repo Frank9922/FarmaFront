@@ -3,15 +3,20 @@ import { createSlice } from '@reduxjs/toolkit';
 export const uiSlice = createSlice({
     name: 'ui',
     initialState: {
-        
+        theme: 'light'
+
     },
     reducers: {
-        increment: (state, /* action */ ) => {
-            state.counter += 1;
+
+
+        toggleTheme: (state ) => {
+            state.theme = state.theme === 'light' ? 'dark' : 'light';        
         },
+
+
     }
 });
 
 
 // Action creators are generated for each case reducer function
-export const { increment } = uiSlice.actions;
+export const { toggleTheme } = uiSlice.actions;

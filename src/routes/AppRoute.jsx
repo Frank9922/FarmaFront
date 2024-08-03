@@ -1,5 +1,4 @@
 import { Navigate, Route, Routes, useLocation } from "react-router-dom"
-import { InicioPage } from "../pages/InicioPage"
 import { FarmaRoute } from "../farma/routes/FarmaRoute"
 import { LoginPage, RegisterPage } from "../auth/pages"
 import { useSelector } from "react-redux"
@@ -15,30 +14,28 @@ export const AppRoute = () => {
 
     return (
         <AnimatePresence>
-    <Routes location={location} key={location.pathname}>
+            <Routes location={location} key={location.pathname}>
+                
+                    {/* Rutas Protegidas */}
+                    { 
+                        status === estados.autenticado ?
+                        <>
+                            <Route path="/*" element={<FarmaRoute />} />
+                            <Route path="/login" element={<Navigate to="/"/>} />
+                            <Route path="/register" element={<Navigate to='/' />} />
 
-{/* Rutas Publicas */}
-<Route path="/" element={<InicioPage />} />
+                        </>
+                        : (
+                            <>
+                                <Route path="/*" element={<Navigate to="/login" />} />
+                                <Route path="/login" element={<LoginPage />} />
+                                <Route path="/register" element={<RegisterPage />} />
+                                
+                            </>
+                        )
 
-{/* Rutas Protegidas */}
-{ 
-    status === estados.autenticado ?
-    <>
-        <Route path="/*" element={<FarmaRoute />} />
-        <Route path="/login" element={<Navigate to="/"/>} />
-        <Route path="/register" element={<Navigate to='/' />} />
-
-    </>
-    : (
-        <>
-            <Route path="/login" element={<LoginPage />} />
-            <Route path="/register" element={<RegisterPage />} />
-            <Route path="/*" element={<Navigate to="/" />} />
-        </>
-    )
-
-}    
-</Routes>
+                    }    
+                    </Routes>
         </AnimatePresence>
 
 )
