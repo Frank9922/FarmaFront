@@ -1,21 +1,40 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { useGetCompaQuery, useGetFarmacosQuery } from "../../store/apis/checkApi"
 import { FarmaLayout } from "../layout/FarmaLayout"
-import Select from 'react-select/async'
-import { ChipComponent } from "../components/ChipComponent";
 import { MedicamentComponent } from "../components/MedicamentComponent";
+import { PopUp } from "../components/PopUp";
+import { ResultadoComparacion } from "../components/ResultadoComparacion";
+import { useDispatch } from "react-redux";
+import { setHistorial } from "../../store/slices/ui/thunks";
 
 export const CompatibilidadPage = () => {
 
+  const [isPopupOpen, setIsPopupOpen] = useState(false);
+  const dispatch = useDispatch();
+
+  const openPopup = () => {
+    setIsPopupOpen(true);
+  };
+
+  const closePopup = () => {
+    setIsPopupOpen(false);
+  };
+
+
   const [farmacos, setFarmacos] = useState([])
 
-  const [skip, setskip] = useState(true)
 
+  const updateSkip = (shouldSkip) => {
+    setskip(shouldSkip);
+  }
+ 
   const { data } = useGetFarmacosQuery();
 
-  const { data: Compa } = useGetCompaQuery(farmacos, { skip: skip});
+
   
-  const [inputValue, setinputValue] = useState(null)
+  const [inputValue] = useState(null)
+
+
 
 
   const loadOptions = async(searchValue, callback) => {
@@ -31,6 +50,7 @@ export const CompatibilidadPage = () => {
 
     if(farmacos.length <= 1) {
       setFarmacos([...farmacos, value])
+      closePopup();
 
     }
 
@@ -43,77 +63,75 @@ export const CompatibilidadPage = () => {
 
   }
 
+
+  const [skip, setskip] = useState(true)
+
+  const { data: compa, isFetching, error } = useGetCompaQuery(farmacos, { skip: skip});
+
   const handleCompa = () => {
 
       setskip(false);
-      setTimeout(() => {
-        
-        setskip(true);
-      }, 500);
 
 
   }
+
+  useEffect(() => {
+
+      if(!skip && !isFetching) {
+        dispatch(setHistorial(compa));
+      }
+
+  }, [isFetching, compa, skip])
+
+  const firstMedicament = farmacos.length > 0 ? farmacos[0] : null;
+  const secondMedicament = farmacos.length > 1 ? farmacos[1] : null;
+
  
   return (
     <FarmaLayout>
           <div className="search">
 
             <h1>Dhasboard</h1>
-
-              {/* <div className="buscador">
-
-                <Select
-                isDisabled={farmacos.length >= 2}
-                loadOptions={loadOptions}
-                className="select-options"
-                value={inputValue}
-                defaultOptions
-                onChange={onSelect}
-                />
-
-              </div>
-              <div className="contenedor-chips">
-                {
-                  farmacos.map((farmaco) => 
-                    <ChipComponent 
-                      key={farmaco.id} 
-                      name={farmaco.label} 
-                      id={farmaco.id}
-                      onDelete={handleDelete}
-                  />
-                  )
-
-                }
-              </div> */}
-
           </div>
-    <div className="prueba">
-      <div className="insights">
-        
-        <MedicamentComponent />
+          
+          <div className="prueba">
 
+            <div className="insights">
 
-        <MedicamentComponent />
+              <MedicamentComponent 
+              openPopup={openPopup}
+              medicament={firstMedicament}
+              handleDelete={handleDelete}
+              updateSkip={updateSkip}
+              />
 
-      </div>
-      <div className="buscar">
-        <button onClick={handleCompa}>Comparar</button>
-      </div>
-      <div className="recent-orders compatible">
-        <div className="head-result">
-          <span className="material-symbols-outlined">monitoring</span>
-          <h2>Resultado</h2>
-        </div>
-          <div className="middle">
-            <div className="left">
-              <h1>Compatible</h1>
+              <MedicamentComponent 
+              openPopup={openPopup}
+              medicament={secondMedicament}
+              handleDelete={handleDelete}
+              updateSkip={updateSkip}
+
+              />
+
             </div>
-            <div className="progreso">
-            Lorem ipsum dolor sit amet consectetur adipisicing elit. Corrupti consectetur exercitationem illo porro nihil alias aperiam. Id laboriosam deleniti nostrum quas fugit, ea incidunt, recusandae necessitatibus neque porro perferendis itaque?
-            </div>
+
+
+            <div className="buscar">
+            <button onClick={handleCompa}>
+              {
+                isFetching ? <div className="spinner"></div> : <span className="btn-text">Comparar</span>
+              }
+            </button>
           </div>
-      </div>
-    </div>
+          {
+            isFetching ? '' : compa ? <ResultadoComparacion compa={compa.compatibilidad} /> : null
+          }
+          </div>
+
+          
+
+          {isPopupOpen && <PopUp farmacos={farmacos} inputValue={inputValue} loadOptions={loadOptions} onClose={closePopup} onSelect={onSelect} />}
+
     </FarmaLayout>
   )
 }

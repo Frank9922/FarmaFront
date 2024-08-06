@@ -131,7 +131,7 @@ clip-path: polygon(0 0, 100% 0, 76% 100%, 0% 100%);
 
     border: solid 1px var(--principal);
     width: 50%;
-margin: auto;
+    margin: auto;
 
 }
 .cont-form form {
@@ -392,24 +392,27 @@ main .prueba .insights> div{
     padding: var(--card-padding);
     box-shadow: var(--box-shadow);
     transition: all 300ms ease;
+    justify-content: center;
 
 
 }
 main .prueba .insights>div:nth-child(1){
     border-top-left-radius: var(--card-border-radius);
+    
 }
-main .prueba .insights>div:nth-child(3){
+main .prueba .insights>div:nth-child(2){
     border-top-right-radius: var(--card-border-radius);
 }
 main .prueba .insights >div:hover{
     box-shadow: none;
 }
 main .prueba .insights>div span, main .prueba .recent-orders .head-result> span{
-    background: var(--back-secund);
+    background: var(--principal);
     padding: 0.5rem;
     border-radius: 50%;
     color:var(--color-white);
     font-size: 2rem;
+    margin-right:auto;
 }
 main .prueba .recent-orders .head-result> span{
     display: none;
@@ -536,10 +539,6 @@ main .prueba .insights .expenses .close-farm{
     background: none;
     color: var(--text-incierto);
   }
-  /* //inicial// */
-  main .prueba .insights .sales{
-    display: none;
-}
 
 main .prueba .insights .nada{ 
     display: flex;
@@ -563,6 +562,7 @@ main .prueba .insights .nada{
  main .prueba .insights .nada .pulse{
     transform: scale(1);
 	animation: pulse 2s infinite;
+    margin:initial!important;
  }
  @keyframes pulse {
 	0% {
@@ -678,7 +678,6 @@ border-bottom-right-radius: var(--card-border-radius) ;
 margin-top: 1rem;
 box-shadow: var(--box-shadow);
 transition: all 300ms ease;
-display: none;
 }
 main .prueba .compatible{
     background: var(--card-compatible);
@@ -691,11 +690,11 @@ main .prueba .variable{
     /* display: none; */
     background: var(--card-variable);
 }
-main .prueba .noprobado{
+main .prueba .noprobada{
     /* display: none; */
     background: var(--card-noprobado);
 }
-main .prueba .incierto{
+main .prueba .incierta{
     /* display: none; */
     background: var(--card-incierto);
 }
@@ -771,6 +770,7 @@ main .prueba .recent-orders a{
     background:  var(--principal);
     color:white;
     border-radius: var(--border-radius-1);
+    transition: all 0.3s ease-in-out;
 }
 .right .top .profile{
     display: flex;
@@ -812,6 +812,47 @@ main .prueba .recent-orders a{
 .right .recent-updates .updates .update span{
     color: var(--principal);
 }
+
+.right .recent-updates .updates .update .incompatible{
+    width: 1rem;
+    height: 1rem;
+    background: var(--text-incompatible);
+    border-radius: var(--border-radius-1);
+    position: relative;
+    top: 0.2rem;
+}
+.right .recent-updates .updates .update .compatible{
+    width: 1rem;
+    height: 1rem;
+    background: var(--text-compatible);
+    border-radius: var(--border-radius-1);
+    position: relative;
+    top: 0.2rem;
+}.right .recent-updates .updates .update .noprobada{
+    width: 1rem;
+    height: 1rem;
+    background: var(--text-noprobado);
+    border-radius: var(--border-radius-1);
+    position: relative;
+    top: 0.2rem;
+}.right .recent-updates .updates .update .variable{
+    width: 1rem;
+    height: 1rem;
+    background: var(--text-variable);
+    border-radius: var(--border-radius-1);
+    position: relative;
+    top: 0.2rem;
+}.right .recent-updates .updates .update .incierto{
+    width: 1rem;
+    height: 1rem;
+    background: var(--text-incierto);
+    border-radius: var(--border-radius-1);
+    position: relative;
+    top: 0.2rem;
+}
+
+
+
 .right .sales-analytics{
     margin-top: 2rem;
 }
@@ -871,6 +912,41 @@ main .prueba .recent-orders a{
     font-weight: 600;
 }
 
+.popup-container {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.5); /* Semi-transparent background */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 1000;
+  }
+  
+  .popup {
+    display:flex;
+    flex-direction: column;
+    background-color: white;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.2);
+    width: 75%;
+  }
+
+  .popup button {
+    margin-bottom: 10px;
+    margin-left: auto;
+    cursor: pointer;
+  }
+  
+  /* Apply backdrop blur effect */
+  .popup-container {
+    backdrop-filter: blur(5px);
+  }
+
+
 /* MEDIA QUERIES */
 @media screen and (max-width:1200px){
     .container-farma{
@@ -907,8 +983,17 @@ main .prueba .recent-orders a{
     main .prueba .insights>div:nth-child(1){
         border-top-left-radius: var(--card-border-radius);
         border-top-right-radius: var(--card-border-radius);
+        border-bottom-left-radius: initial;
     }
-    main .prueba .insights>div:nth-child(2){
+
+    main .prueba .insights>div:nth-child(2) {
+        border-top-right-radius: initial;
+        border-bottom-left-radius: var(--card-border-radius);
+        border-bottom-right-radius: var(--card-border-radius);
+    }
+
+
+    main .prueba .insights>div:nth-child(3){
         border-radius: 0;
     }
     main .prueba .recent-orders{

@@ -1,33 +1,38 @@
-import { motion } from "framer-motion"
-import { NavBar } from "../components/NavBar";
-import { RightComponent } from "../components/RightComponent";
 import PropTypes from 'prop-types';
+import { NavBar } from '../components/NavBar';
+import { RightComponent } from '../components/RightComponent';
+import { motion } from 'framer-motion';
 
 
 export const FarmaLayout = ( {children} ) => {
 
   return (
 
-    <motion.div
-    initial={{ opacity: 0 }}
-    animate={{ opacity: 1 }}
-    exit={{  transition: { duration: 0.4 } }}
-    transition={{ duration: 0.4 }}
-    >
-
-    <div className="container-farma">
-
-        <NavBar />
+    
+<div className="container-farma">
        
-  
-            {
-              children
-            }
-         
-       
-        <RightComponent />
+    <NavBar />
 
-     </motion.div>
+        <main>
+
+          <motion.div
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            exit={{  transition: { duration: 0.7 } }}
+            transition={{ duration: 0.7 }}
+            className="search">
+
+            { children }
+
+          </motion.div>
+
+        </main>
+
+      <RightComponent />
+
+</div>
+
+
 
   )
 }

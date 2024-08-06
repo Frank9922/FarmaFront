@@ -1,12 +1,16 @@
 import { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { toggleTheme } from "../../store/slices/ui/uiSlice";
+import { HistorialResultados } from "./HistorialResultados";
 
 export const RightComponent = () => {
 
-    const theme = useSelector(state => state.ui.theme)
-    const user = useSelector(state => state.auth)
     const dispatch = useDispatch(); 
+
+    const theme = useSelector(state => state.ui.theme)
+
+    const user = useSelector(state => state.auth)
+    
 
     const abbreviateName = (fullName) => {
         const names = fullName.split(' ');
@@ -33,58 +37,29 @@ const onThemeToggler = () => {
 
 
   return (
-<div className="right">
-  <div className="top">
-    <button id="menu-btn">
-      <span className="material-symbols-outlined">menu</span>
-    </button>
-    <div onClick={onThemeToggler} className="theme-toggler">
-      <span className={`material-symbols-outlined ${theme === 'light' ? 'active' : ''}`}>light_mode</span>
-      <span className={`material-symbols-outlined ${theme === 'dark' ? 'active' : ''}`}>dark_mode</span>
+    <div className="right">
+    <div className="top">
+      <button id="menu-btn">
+        <span className="material-symbols-outlined">menu</span>
+      </button>
+      <div className="theme-toggler" onClick={onThemeToggler}>
+        <span className={`material-symbols-outlined ${theme === 'light' ? 'active' : ''}`}>light_mode</span>
+        <span className={`material-symbols-outlined ${theme === 'dark' ? 'active' : ''}`}>dark_mode</span>
+      </div>
+      <div className="profile">
+        <div className="info">
+          <b>{abbreviateName(user.displayName)}</b>
+        </div>
+          
+            {
+              user.photoUrl == '' ? <div className="profile-photo"> <img src={user.photoUrl} alt=""/> </div> : null
+            }
+          
+        
+      </div>
     </div>
-    <div className="profile">
-      <div className="info">
-        <b>{ abbreviateName(user.displayName)} </b> -
-        <small className="text-muted">admin</small>
-      </div>
-      <div className="profile-photo">
-        <img src={user.photoUrl} alt=""/>
-      </div>
-    </div>
+          <HistorialResultados />
   </div>
-   {/* FINT TOP  */}
-  <div className="recent-updates">
-    <h2>Busquedas Recientes</h2>
-      <div className="updates">
-        <div className="update">
-          <div className="profile-photo"><img src="perfil.jpg" alt=""/></div>
-          <div className="message">
-            <p><b>TuVieja</b>Lorem ipsum dolor, sit amet. Temporibus impedit eius
-               nulla ut quod cupiditate est,</p>
-              <small className="text-muted">2 hace 2 min</small>
-          </div>
-        </div>
-        <div className="update">
-          <div className="profile-photo"><img src="perfil.jpg" alt=""/></div>
-          <div className="message">
-            <p><b>TuVieja</b>Lorem ipsum dolor, sit amet. Temporibus impedit eius
-               nulla ut quod cupiditate est,</p>
-              <small className="text-muted">2 hace 2 min</small>
-          </div>
-        </div>
-        <div className="update">
-          <div className="profile-photo"><img src="perfil.jpg" alt=""/></div>
-          <div className="message">
-            <p><b>TuVieja</b>Lorem ipsum dolor, sit amet. Temporibus impedit eius
-               nulla ut quod cupiditate est,</p>
-              <small className="text-muted">2 hace 2 min</small>
-          </div>
-        </div>
-     
-      </div>
-    
-  </div>
-</div>
 
 
 )

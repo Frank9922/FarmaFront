@@ -1,5 +1,6 @@
 import { useDispatch } from "react-redux"
 import { startLogout } from "../../store/slices/auth/thunks"
+import { Link } from "react-router-dom"
 
 export const NavBar = () => {
 
@@ -21,15 +22,15 @@ export const NavBar = () => {
       </div>
     </div>
       <div className="sidebar">
-        <a href="#" className="active">
+        <Link to='/compatibilidad' className="active">
           <span className="material-symbols-outlined">compare</span>
           <h3>Compatibilidad</h3>
-        </a>
-        <a href="#">
+        </Link>
+        <Link to='/medicamentos'>
           <span className="material-symbols-outlined">syringe</span>
            {/* vaccines  */}
           <h3>Farmacos</h3>
-        </a>
+        </Link>
         <a onClick={onLogout}>
           <span className="material-symbols-outlined">logout</span>
           <h3>Salir</h3>
