@@ -221,7 +221,7 @@ clip-path: polygon(0 0, 100% 0, 76% 100%, 0% 100%);
     display: grid;
     width: 100%;
     margin: 0;
-    gap: 1.8rem;
+    gap: 1.5rem;
     grid-template-columns: 14rem auto 23rem;
 }
 
@@ -331,6 +331,7 @@ aside .sidebar a:hover span{
 }
 main h1{
     color: var(--dark);
+    margin-top: 1.5rem;
 }
 main .buscador{
     display:inline-flex;
@@ -382,7 +383,7 @@ color: var(--text-secund);
 main .prueba .insights{
     display: grid;
     grid-template-columns: repeat(2, 1fr);
-    gap: 1.6rem;
+    gap: 1rem;
 }
 main .prueba .insights> div{
 
@@ -1104,8 +1105,8 @@ main .prueba .recent-orders a{
     }
     .right .top .theme-toggler{
         width: 4.4rem;
-        position: absolute;
-        left: 66%;
+        position: relative;
+        left: 2rem;
     }
     .right .profile .info{
         display: none;
