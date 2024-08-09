@@ -25,7 +25,7 @@ export const AuthLayout = ( { children }) => {
     transition={{ duration: 0.4}}
     >
 
-    <main>
+   
 
     <div className="container">
       <div className="cont-img">
@@ -38,7 +38,7 @@ export const AuthLayout = ( { children }) => {
       </div>
       
     </div> 
-    </main>
+  
     </motion.div>
 
   )

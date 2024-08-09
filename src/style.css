@@ -678,6 +678,7 @@ border-bottom-right-radius: var(--card-border-radius) ;
 margin-top: 1rem;
 box-shadow: var(--box-shadow);
 transition: all 300ms ease;
+height: 20vh;
 }
 main .prueba .compatible{
     background: var(--card-compatible);
@@ -982,6 +983,9 @@ main .prueba .recent-orders a{
         gap:0;
         row-gap: 1rem;
     }
+    main .prueba .insights> div{
+        height: 23vh;
+    }
     main .prueba .insights>div:nth-child(1){
         border-top-left-radius: var(--card-border-radius);
         border-top-right-radius: var(--card-border-radius);
@@ -1023,6 +1027,9 @@ main .prueba .recent-orders a{
     .container-farma{
         width: 100%;
         grid-template-columns: 1fr;
+    }
+    main h1{
+        margin: 0;
     }
     aside{
     position: fixed;
@@ -1122,6 +1129,11 @@ main .prueba .recent-orders a{
     }
     .right .top button span{
         font-size: 2rem;
+    }
+}
+@media screen and (max-width:768px){
+    main .prueba .insights .nada{
+        text-align: center;
     }
 }
 
