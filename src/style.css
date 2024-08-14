@@ -380,11 +380,49 @@ main .buscador input[type="search"]{
 main .buscador input[type="search"]::-webkit-search-cancel-button{
 color: var(--text-secund);
 }
+main .top-farmacos{
+    display: flex;
+    align-items: center;
+    transition: all 300ms ease;
+}
+main .top-farmacos .btn-farm{
+    color: white;
+    background: var(--principal);
+    padding: 0.5rem;
+    margin-left: 1rem;
+    margin-top: 1rem;
+
+    border-radius: var(--border-radius-2);
+    cursor: pointer;
+    transition: all 300ms ease;
+}
+main .top-farmacos .btn-farm span{
+    display: none;
+}
+main .top-farmacos .btn-farm::after{
+    content: 'Agregar';
+}
+main .farmacos{
+    margin-top: 1rem;
+    color: var(--dark);
+}
+main .farmacos table{
+    width: 50%;
+    margin: auto;
+    text-align: center;
+    transition: all 300ms ease;
+}
+main .farmacos table td{
+    border-bottom: dashed 1px var(--principal);
+    padding: 1rem;
+    text-transform: capitalize;
+}
 main .prueba .insights{
     display: grid;
     grid-template-columns: repeat(2, 1fr);
     gap: 1rem;
 }
+
 main .prueba .insights> div{
 
     display:flex;
@@ -575,7 +613,7 @@ main .prueba .insights .nada{
 		box-shadow: 0 0 0 10px rgba(197, 209, 255, 1);
 	}
 
-	100% {
+	100% { 
 		transform: scale(0.95);
 		box-shadow: 0 0 0 0 rgba(223, 230, 255, 1);
 	}
@@ -977,7 +1015,7 @@ main .prueba .recent-orders a{
     }
     main .prueba{
         margin-bottom: 1rem;
-    }
+    }    
     main .prueba .insights{
         grid-template-columns: 1fr;
         gap:0;
@@ -1009,18 +1047,11 @@ main .prueba .recent-orders a{
         transform:  translateX(-50%);
         margin: 2rem 0 0 8.8rem; */
     }
-    /* main .prueba .recent-orders table{
-        width: 83vw;
-        
+    main .farmacos table{
+        width: 80%;
+        margin: auto;
+        text-align: center;
     }
-    main table thead tr th:last-child,
-    main table thead tr th:first-child{
-        display: none;
-    }
-    main table tbody tr td:last-child,
-    main table tbody tr td:first-child{
-        display: none;
-    } */
 }
 /* MEDIA QUERIES PARA TABLETS yCELUS PA*/
 @media screen and (max-width:768px) {
@@ -1030,6 +1061,15 @@ main .prueba .recent-orders a{
     }
     main h1{
         margin: 0;
+    }
+    main .top-farmacos{
+        justify-content: space-between;
+        align-items: baseline;
+        transition: all 300ms ease;
+    }
+    main .top-farmacos .btn-farm{
+        font-weight: 400;
+        transition: all 300ms ease;
     }
     aside{
     position: fixed;
@@ -1161,8 +1201,17 @@ main .prueba .recent-orders a{
         padding: 2rem 1rem;
     }
 }
-@media screen and (max-width:550){
-
+@media screen and (max-width:550px){
+    main .top-farmacos{
+        justify-content: start;
+    }
+    main .top-farmacos .btn-farm::after{
+        content: '';
+    }
+    main .top-farmacos .btn-farm span{
+    display: block;
+    font-size: 16px;
+    }
 }
 
 /* KeyFrames */
