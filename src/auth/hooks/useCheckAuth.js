@@ -17,7 +17,8 @@ export const useCheckAuth = () => {
     dispatch(checkingCredentials());
 
       if (!token) {
-        dispatch(logout());
+
+        return dispatch(logout());
       }
 
       api.get('/api/user', {
@@ -26,11 +27,16 @@ export const useCheckAuth = () => {
         }
     })
     .then((response) => {
-    dispatch(login(response.data.user));
+      
+      console.log(response.data);
+
+    dispatch(login(response.data));
     return navigate('/compatibilidad');
     })
 
     .catch((error) => {
+
+      localStorage.removeItem('token');
         
      dispatch(logout())
 

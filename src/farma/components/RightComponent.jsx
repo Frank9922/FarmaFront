@@ -9,8 +9,7 @@ export const RightComponent = () => {
 
     const theme = useSelector(state => state.ui.theme)
 
-    const user = useSelector(state => state.auth)
-    
+    const user = useSelector(state => state.auth)    
 
     const abbreviateName = (fullName) => {
         const names = fullName.split(' ');
