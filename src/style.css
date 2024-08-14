@@ -221,7 +221,7 @@ clip-path: polygon(0 0, 100% 0, 76% 100%, 0% 100%);
     display: grid;
     width: 100%;
     margin: 0;
-    gap: 1.8rem;
+    gap: 1.5rem;
     grid-template-columns: 14rem auto 23rem;
 }
 
@@ -331,6 +331,7 @@ aside .sidebar a:hover span{
 }
 main h1{
     color: var(--dark);
+    margin-top: 1.5rem;
 }
 main .buscador{
     display:inline-flex;
@@ -360,7 +361,7 @@ main .buscador .select-options {
 }
 
 .css-1nmdiq5-menu {
-    background-color: var(--background)!important;
+    background-color: var(--principal)!important;
 }
 main .buscador label span{
     color: var(--text-secund);
@@ -379,11 +380,49 @@ main .buscador input[type="search"]{
 main .buscador input[type="search"]::-webkit-search-cancel-button{
 color: var(--text-secund);
 }
+main .top-farmacos{
+    display: flex;
+    align-items: center;
+    transition: all 300ms ease;
+}
+main .top-farmacos .btn-farm{
+    color: white;
+    background: var(--principal);
+    padding: 0.5rem;
+    margin-left: 1rem;
+    margin-top: 1rem;
+
+    border-radius: var(--border-radius-2);
+    cursor: pointer;
+    transition: all 300ms ease;
+}
+main .top-farmacos .btn-farm span{
+    display: none;
+}
+main .top-farmacos .btn-farm::after{
+    content: 'Agregar';
+}
+main .farmacos{
+    margin-top: 1rem;
+    color: var(--dark);
+}
+main .farmacos table{
+    width: 50%;
+    margin: auto;
+    text-align: center;
+    transition: all 300ms ease;
+}
+main .farmacos table td{
+    border-bottom: dashed 1px var(--principal);
+    padding: 1rem;
+    text-transform: capitalize;
+}
 main .prueba .insights{
     display: grid;
     grid-template-columns: repeat(2, 1fr);
-    gap: 1.6rem;
+    gap: 1rem;
 }
+
 main .prueba .insights> div{
 
     display:flex;
@@ -393,7 +432,7 @@ main .prueba .insights> div{
     box-shadow: var(--box-shadow);
     transition: all 300ms ease;
     justify-content: center;
-
+    height: 25vh;
 
 }
 main .prueba .insights>div:nth-child(1){
@@ -442,9 +481,7 @@ main .prueba .insights>div.expenses .header button {
     transition: all 0.2s ease-in-out;
 }
 main .prueba .insights>div.expenses .header button:hover {
-
     opacity: 0.8;
-
 }
 
 main .prueba .insights>div.sales span{
@@ -549,10 +586,11 @@ main .prueba .insights .nada{
  
  }
  main .prueba .insights .nada h3{
- color: var(--text-principal);
+    color: var(--dark);
  }
  main .prueba .insights .nada span{
      background-color: var(--principal);
+     color: white;
  }
  main .prueba .insights .nada span::after{
      content: "ads_click";
@@ -575,7 +613,7 @@ main .prueba .insights .nada{
 		box-shadow: 0 0 0 10px rgba(197, 209, 255, 1);
 	}
 
-	100% {
+	100% { 
 		transform: scale(0.95);
 		box-shadow: 0 0 0 0 rgba(223, 230, 255, 1);
 	}
@@ -678,6 +716,7 @@ border-bottom-right-radius: var(--card-border-radius) ;
 margin-top: 1rem;
 box-shadow: var(--box-shadow);
 transition: all 300ms ease;
+height: 20vh;
 }
 main .prueba .compatible{
     background: var(--card-compatible);
@@ -765,10 +804,11 @@ main .prueba .recent-orders a{
     display:flex;
     align-items: center;
     justify-content: center;
+    color: var(--dark);
 }
 .right .theme-toggler span.active{
     background:  var(--principal);
-    color:white;
+    color:var(--background);
     border-radius: var(--border-radius-1);
     transition: all 0.3s ease-in-out;
 }
@@ -776,6 +816,7 @@ main .prueba .recent-orders a{
     display: flex;
     gap: 2rem;
     text-align: right;
+    color: var(--dark);
     
 }
 .right .top .profile .info {
@@ -974,11 +1015,14 @@ main .prueba .recent-orders a{
     }
     main .prueba{
         margin-bottom: 1rem;
-    }
+    }    
     main .prueba .insights{
         grid-template-columns: 1fr;
         gap:0;
         row-gap: 1rem;
+    }
+    main .prueba .insights> div{
+        height: 23vh;
     }
     main .prueba .insights>div:nth-child(1){
         border-top-left-radius: var(--card-border-radius);
@@ -1003,24 +1047,29 @@ main .prueba .recent-orders a{
         transform:  translateX(-50%);
         margin: 2rem 0 0 8.8rem; */
     }
-    /* main .prueba .recent-orders table{
-        width: 83vw;
-        
+    main .farmacos table{
+        width: 80%;
+        margin: auto;
+        text-align: center;
     }
-    main table thead tr th:last-child,
-    main table thead tr th:first-child{
-        display: none;
-    }
-    main table tbody tr td:last-child,
-    main table tbody tr td:first-child{
-        display: none;
-    } */
 }
 /* MEDIA QUERIES PARA TABLETS yCELUS PA*/
 @media screen and (max-width:768px) {
     .container-farma{
         width: 100%;
         grid-template-columns: 1fr;
+    }
+    main h1{
+        margin: 0;
+    }
+    main .top-farmacos{
+        justify-content: space-between;
+        align-items: baseline;
+        transition: all 300ms ease;
+    }
+    main .top-farmacos .btn-farm{
+        font-weight: 400;
+        transition: all 300ms ease;
     }
     aside{
     position: fixed;
@@ -1104,8 +1153,8 @@ main .prueba .recent-orders a{
     }
     .right .top .theme-toggler{
         width: 4.4rem;
-        position: absolute;
-        left: 66%;
+        position: relative;
+        left: 1rem;
     }
     .right .profile .info{
         display: none;
@@ -1114,12 +1163,17 @@ main .prueba .recent-orders a{
         display: inline-block;
         background: transparent;
         cursor: pointer;
-        color: var(--text-principal);
+        color: var(--principal);
         position: absolute;
         left: 1rem;
     }
     .right .top button span{
         font-size: 2rem;
+    }
+}
+@media screen and (max-width:768px){
+    main .prueba .insights .nada{
+        text-align: center;
     }
 }
 
@@ -1147,8 +1201,17 @@ main .prueba .recent-orders a{
         padding: 2rem 1rem;
     }
 }
-@media screen and (max-width:550){
-
+@media screen and (max-width:550px){
+    main .top-farmacos{
+        justify-content: start;
+    }
+    main .top-farmacos .btn-farm::after{
+        content: '';
+    }
+    main .top-farmacos .btn-farm span{
+    display: block;
+    font-size: 16px;
+    }
 }
 
 /* KeyFrames */
