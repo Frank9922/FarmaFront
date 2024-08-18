@@ -30,7 +30,7 @@ export const useCheckAuth = () => {
       
       console.log(response.data);
 
-    dispatch(login(response.data));
+    dispatch(login(response.data.user));
     return navigate('/compatibilidad');
     })
 

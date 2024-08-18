@@ -1,5 +1,5 @@
 import { api } from "../../../api/api";
-import { checkingCredentials, errorResponse, login, logout } from "./authSlice"
+import { checkingCredentials, errorResponse, insert, login, logout } from "./authSlice"
 
 
 
@@ -82,7 +82,17 @@ export const startLoginWithEmalAndPassword = ({email, password}) => {
         }
 
 }
+export const insertFarmaco =(name)=>{
 
+        return async(dispatch)=>{
+        
+                const algo = await api.post('/api/createFarma',{name,label:name})
+                
+                dispatch(insert(algo))
+                console.log(algo)
+        }
+
+}
 export const startLogout = () => {
         
         const token = localStorage.getItem('token');

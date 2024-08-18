@@ -10,6 +10,7 @@ export const authSlice = createSlice({
         email: null,
         photoUrl: null,
         errorResponse: null,
+        insertResponse: null,
     },  
     reducers: {
         checkingCredentials: (state) => {
@@ -36,10 +37,14 @@ export const authSlice = createSlice({
             state.displayName = null,
             state.email = null,
             state.photoUrl = null
-        }
+        },
+        insert:(state, {payload})=>{
+            state.insertResponse=payload
+        },
+
     }
 });
 
 
 // Action creators are generated for each case reducer function
-export const { login, logout, checkingCredentials, errorResponse } = authSlice.actions;
+export const { login, logout, checkingCredentials, errorResponse, insert} = authSlice.actions;
