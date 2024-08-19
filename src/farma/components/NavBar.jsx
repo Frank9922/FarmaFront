@@ -1,23 +1,32 @@
-import { useDispatch } from "react-redux"
+import { useDispatch, useSelector } from "react-redux"
 import { startLogout } from "../../store/slices/auth/thunks"
 import { Link } from "react-router-dom"
+import PropTypes from 'prop-types';
+import { toggleMenu } from "../../store/slices/ui/uiSlice";
+
 
 export const NavBar = () => {
 
     const dispatch = useDispatch()
 
+    const { menuOpen } = useSelector(state => state.ui)
+
     const onLogout = () => {
         dispatch(startLogout());
     }
 
+    const closeMenu = () => {
+      dispatch(toggleMenu());
+    }
+
   return (
-    <aside>
+<aside style={{ display: menuOpen === 'true' ? 'block' : '' }}>
     <div className="top">
       <div className="logo">
         <img src="log3-removebg-preview.png" alt="" />
         <h2 className=""><span className="danger">LOGO</span></h2>
       </div>
-      <div className="close" id="close-btn">
+      <div className="close" id="close-btn" onClick={closeMenu}>
         <span className="material-symbols-outlined">close</span>
       </div>
     </div>
@@ -39,4 +48,7 @@ export const NavBar = () => {
   </aside>
 
 )
+}
+NavBar.propTypes = {
+  isActiveMenu: PropTypes.bool
 }

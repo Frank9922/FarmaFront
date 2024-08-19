@@ -2,9 +2,21 @@ import PropTypes from 'prop-types';
 import { NavBar } from '../components/NavBar';
 import { RightComponent } from '../components/RightComponent';
 import { motion } from 'framer-motion';
+import { useState } from 'react';
+import { useDispatch } from 'react-redux';
+import { toggleMenu } from '../../store/slices/ui/uiSlice';
 
 
 export const FarmaLayout = ( {children} ) => {
+
+  const [open, setopen] = useState(false)
+  
+  const dispatch = useDispatch()
+
+
+  const handleButtonClick = () => {
+      dispatch(toggleMenu());
+  }
 
   return (
 
@@ -28,7 +40,7 @@ export const FarmaLayout = ( {children} ) => {
 
         </main>
 
-      <RightComponent />
+      <RightComponent openMenu={handleButtonClick}/>
 
 </div>
 

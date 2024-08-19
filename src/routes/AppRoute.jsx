@@ -5,12 +5,31 @@ import { useSelector } from "react-redux"
 import { estados } from "../store/slices/auth"
 import { useCheckAuth } from "../auth/hooks/useCheckAuth"
 import { AnimatePresence } from "framer-motion"
+import { LoadingComponent } from "../farma/components/LoadingComponent"
+import { motion } from "framer-motion"
+
 
 export const AppRoute = () => {
 
     useCheckAuth()
+    
     const status = useSelector(state => state.auth.estado);
+    const { loaderGeneral } = useSelector(state => state.ui);
     const location = useLocation();
+
+    if(loaderGeneral) {
+        return (<AnimatePresence>
+                    <motion.div
+                    initial={{opacity: 0}}
+                    animate={{ opacity: 1 }}
+                    exit={{ opacity: 0 }}
+                    transition={{ duration: 0.3 }}
+                    >
+                        <LoadingComponent />
+                    </motion.div>
+                    
+                </AnimatePresence>)
+    }
 
     return (
         <AnimatePresence>
