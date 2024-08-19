@@ -1,4 +1,5 @@
 import { api } from "../../../api/api";
+import { loaderActive, loaderDisabled } from "../ui/uiSlice";
 import { checkingCredentials, errorResponse, login, logout } from "./authSlice"
 
 
@@ -33,7 +34,7 @@ export const startRegister = ({ nombre, apellido, email, password}) => {
 
                         localStorage.setItem('token', data.token);
 
-                        dispatch(login(data.usuario));
+                        dispatch(login(data.user));
 
 
                 } catch (e) {
@@ -88,6 +89,8 @@ export const startLogout = () => {
         const token = localStorage.getItem('token');
 
         return async(dispatch) => {
+
+                dispatch(loaderActive());
                 
                 try {
                         const { data } = await api.get('/api/logout', {
@@ -104,6 +107,10 @@ export const startLogout = () => {
 
                         console.log(e);
 
+                }
+
+                finally {
+                        dispatch(loaderDisabled());
                 }
 
 

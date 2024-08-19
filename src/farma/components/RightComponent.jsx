@@ -2,8 +2,9 @@ import { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { toggleTheme } from "../../store/slices/ui/uiSlice";
 import { HistorialResultados } from "./HistorialResultados";
+import PropTypes from 'prop-types';
 
-export const RightComponent = () => {
+export const RightComponent = ({openMenu}) => {
 
     const dispatch = useDispatch(); 
 
@@ -33,12 +34,10 @@ const onThemeToggler = () => {
 
 } 
 
-
-
   return (
     <div className="right">
     <div className="top">
-      <button id="menu-btn">
+      <button onClick={openMenu} id="menu-btn">
         <span className="material-symbols-outlined">menu</span>
       </button>
       <div className="theme-toggler" onClick={onThemeToggler}>

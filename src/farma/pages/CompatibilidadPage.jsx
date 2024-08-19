@@ -70,7 +70,9 @@ export const CompatibilidadPage = () => {
 
   const handleCompa = () => {
 
-      setskip(false);
+    if(farmacos.length < 2) return 
+    
+    setskip(false);
 
 
   }

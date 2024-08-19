@@ -28,10 +28,8 @@ export const useCheckAuth = () => {
     })
     .then((response) => {
       
-      console.log(response.data);
-
-    dispatch(login(response.data));
-    return navigate('/compatibilidad');
+      dispatch(login(response.data.user));
+      return navigate('/compatibilidad');
     })
 
     .catch((error) => {
