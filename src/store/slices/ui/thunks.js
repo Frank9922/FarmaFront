@@ -12,7 +12,7 @@ export const setHistorial = ({ compatibilidad }) => {
                 compatibilidad,
                 horaInsercion: new Date().getTime()
             };
-
+            
 
             // Verificar si el elemento ya existe en el historial
             const existe = historial.some(item => JSON.stringify(item.compatibilidad.id) === JSON.stringify(nuevoRegistro.compatibilidad.id));

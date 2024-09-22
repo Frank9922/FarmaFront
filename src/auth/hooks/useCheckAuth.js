@@ -1,4 +1,3 @@
-import axios from "axios";
 import { checkingCredentials, login, logout } from "../../store/slices/auth";
 import { useDispatch } from "react-redux";
 import { useEffect } from "react";

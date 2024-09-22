@@ -1,6 +1,6 @@
 import { useDispatch, useSelector } from "react-redux"
 import { startLogout } from "../../store/slices/auth/thunks"
-import { Link } from "react-router-dom"
+import { NavLink } from "react-router-dom"
 import PropTypes from 'prop-types';
 import { toggleMenu } from "../../store/slices/ui/uiSlice";
 
@@ -31,15 +31,15 @@ export const NavBar = () => {
       </div>
     </div>
       <div className="sidebar">
-        <Link to='/compatibilidad' className="active">
+        <NavLink to='/compatibilidad' className={({ isActive }) => (isActive ? 'active' : '')}>
           <span className="material-symbols-outlined">compare</span>
           <h3>Compatibilidad</h3>
-        </Link>
-        <Link to='/medicamentos'>
+        </NavLink>
+        <NavLink to='/medicamentos' className={({ isActive }) => (isActive ? 'active' : '')}>
           <span className="material-symbols-outlined">syringe</span>
            {/* vaccines  */}
           <h3>Farmacos</h3>
-        </Link>
+        </NavLink>
         <a onClick={onLogout}>
           <span className="material-symbols-outlined">logout</span>
           <h3>Salir</h3>

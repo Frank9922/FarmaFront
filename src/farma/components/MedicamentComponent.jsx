@@ -1,7 +1,7 @@
 import PropTypes from 'prop-types';
 
 
-export const MedicamentComponent = ( {medicament, openPopup, handleDelete, updateSkip } ) => {
+export const MedicamentComponent = ( {medicament, openPopup, handleDelete, updateSkip, } ) => {
 
   const onDelete = (id) => {
 
@@ -25,10 +25,8 @@ export const MedicamentComponent = ( {medicament, openPopup, handleDelete, updat
             <h1>{medicament.name}</h1>
           </div>
           <div className="progreso">
-            Informacion del Farmaco A
-            <div className="number">
-              <p>70c</p>
-            </div>
+            {medicament.accion_teraupetica}
+
           </div>
         </div>
         <div className="close-farm" id="close-farm-btn">
@@ -51,7 +49,8 @@ export const MedicamentComponent = ( {medicament, openPopup, handleDelete, updat
 MedicamentComponent.propTypes = {
   medicament: PropTypes.shape({
     name: PropTypes.string,
-    id: PropTypes.number
+    id: PropTypes.number,
+    accion_teraupetica: PropTypes.string
   }),
   updateSkip: PropTypes.func,
   openPopup: PropTypes.func.isRequired,

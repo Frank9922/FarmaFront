@@ -2,6 +2,10 @@ import { createSlice } from '@reduxjs/toolkit';
 
 const historial = JSON.parse(localStorage.getItem('historial'));
 
+if(!historial) {
+    console.log('no existe historial ')   
+}
+
 export const uiSlice = createSlice({
     name: 'ui',
     initialState: {
@@ -9,16 +13,15 @@ export const uiSlice = createSlice({
         theme: 'light',
         historial: historial || [],
         menuOpen: 'false',
+        modalAbm: null,
 
     },
     reducers: {
 
         loaderActive: (state) => {
-            console.log('Iniciado el loader')
             state.loaderGeneral = true;
         },
         loaderDisabled: (state) => {
-            console.log('Loader disabled')
             state.loaderGeneral = false;
         },
 
@@ -36,12 +39,17 @@ export const uiSlice = createSlice({
             if (!existe) {
                 state.historial.push(payload);
             }
-        }
+        },
 
+        openModal: (state, {payload}) => {
+
+            state.modalAbm = payload
+
+        },
 
     }
 });
 
 
 // Action creators are generated for each case reducer function
-export const { toggleTheme, addHistorial, toggleMenu, loaderActive, loaderDisabled } = uiSlice.actions;
+export const { toggleTheme, addHistorial, toggleMenu, loaderActive, loaderDisabled, openModal, closeModal} = uiSlice.actions;

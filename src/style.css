@@ -403,9 +403,13 @@ main .top-farmacos .btn-farm::after{
     content: 'Agregar';
 }
 main .farmacos{
+    max-height: 50vh;
+    width: 100%;
+    overflow: auto;
     margin-top: 1rem;
     color: var(--dark);
 }
+
 main .farmacos table{
     width: 50%;
     margin: auto;

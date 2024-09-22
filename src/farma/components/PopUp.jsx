@@ -11,6 +11,7 @@ export const PopUp = ({onClose, farmacos, loadOptions, inputValue, onSelect}) =>
 
   // Usar useEffect para enfocar el select cuando el popup se abra
   useEffect(() => {
+    
     // Esperar a que el popup se monte y se anime
     const timer = setTimeout(() => {
       if (selectRef.current) {

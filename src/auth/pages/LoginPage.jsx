@@ -52,8 +52,7 @@ export const LoginPage = () => {
         animate={{ x: 0, opacity: 1 }}
         exit={{ x: "-20%", opacity: 0, transition: { duration: 0.2 } }}
         transition={{ delay: 0, duration: 0.2 }}
-      >
-      <form onSubmit={onSumbit}>
+      >      <form onSubmit={onSumbit}>
 
                 <div className="head-form">
                     <h1>Inicio de Sesion</h1>
@@ -67,6 +66,7 @@ export const LoginPage = () => {
                     type="email"
                     name="email"
                     value={email}
+                    disabled={auth.estado === 'checking'}
                     onChange={onInputChange}
                     className={` ${!!emailValid && formSubmitted ? 'error' : ''}`}
                     placeholder="Email" 
@@ -75,6 +75,7 @@ export const LoginPage = () => {
                     <input 
                     type="password" 
                     name="password"
+                    disabled={auth.estado === 'checking'}
                     value={password}
                     autoComplete="new-password"
                     onChange={onInputChange}

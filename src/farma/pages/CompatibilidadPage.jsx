@@ -105,6 +105,7 @@ export const CompatibilidadPage = () => {
               medicament={firstMedicament}
               handleDelete={handleDelete}
               updateSkip={updateSkip}
+              
               />
 
               <MedicamentComponent 
