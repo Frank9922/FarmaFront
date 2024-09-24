@@ -35,6 +35,10 @@ export const checkApi = createApi({
             query: () => `api/farmacos`,
           }),
 
+        getFarmaco: builder.query({
+            query: (name) => `api/farmaco/${name}`,
+          }),
+
     })
 })
-export const { useGetCompaQuery, useGetFarmacosQuery } = checkApi;
+export const { useGetCompaQuery, useGetFarmacosQuery, useGetFarmacoQuery } = checkApi;
