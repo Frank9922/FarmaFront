@@ -93,7 +93,7 @@ export const CompatibilidadPage = () => {
     <FarmaLayout>
           <div className="search">
 
-            <h1>Dhasboard</h1>
+            <h1>Compatibilidad</h1>
           </div>
           
           <div className="prueba">

@@ -222,7 +222,7 @@ clip-path: polygon(0 0, 100% 0, 76% 100%, 0% 100%);
     width: 100%;
     margin: 0;
     gap: 1.5rem;
-    grid-template-columns: 14rem auto 23rem;
+    grid-template-columns: 13rem auto 19rem;
 }
 
 small{
@@ -262,6 +262,7 @@ aside .top{
 aside .logo{
     display: flex;
     gap: 0.8rem;
+    margin: auto;
 }
 aside .top img{
     width: 2rem;
@@ -296,9 +297,15 @@ aside .sidebar a span{
     font-size: 1.6rem;
     transition: all 300ms ease;
 }
-aside .sidebar a:last-child{
+aside .sidebar a:nth-last-child(1){
     position: absolute;
     bottom: 2rem;
+    width: 100%;
+}
+
+aside .sidebar a:nth-last-child(2){
+    position: absolute;
+    bottom: 4.5rem;
     width: 100%;
 }
 aside .sidebar a.active{
@@ -435,8 +442,7 @@ main .prueba .insights> div{
     padding: var(--card-padding);
     box-shadow: var(--box-shadow);
     transition: all 300ms ease;
-    justify-content: center;
-    height: 25vh;
+    height: auto;
 
 }
 main .prueba .insights>div:nth-child(1){
@@ -496,6 +502,7 @@ main .prueba .recent-orders .head-result> span{
 }
 main .prueba .insights>div .middle{
     display: flex;
+    flex-direction: column;
     align-items: center;
     justify-content: space-between;
 }
@@ -512,19 +519,19 @@ main .prueba .insights h3{
 }
 main .prueba .insights h1{
     color: var(--dark);
+    margin-top: -2.4rem;
+    width: auto;
 }
 main .prueba .insights .progreso{
     color: var(--color-dark);
     position: relative;
-    width: 92px;
-    height: 92px;
-    border-radius: 50%;
+    
 }
 main .prueba .insights svg{
     width: 7rem;
     height: 7rem;
 }
-main .prueba .insights svg circle{
+/* main .prueba .insights svg circle{
     fill: none;
     stroke: var(--principal);
     stroke-width: 14;
@@ -532,7 +539,7 @@ main .prueba .insights svg circle{
     transform: translate(5px,5px);
     stroke-dasharray: 110;
     stroke-dashoffset: 92;
-}
+} 
 main .prueba .insights .sales svg circle{
     stroke-dashoffset: -30;
     stroke-dasharray: 200;
@@ -555,7 +562,7 @@ main .prueba .insights .progreso .number{
     justify-content: center;
     align-items: center;
 }
-
+*/
 main .insights small{
     margin-top:1.6rem;
     display: block;
@@ -586,6 +593,7 @@ main .prueba .insights .nada{
     flex-direction: column;
     align-items: center;
     justify-content: center;
+    margin: auto;
  
  
  }
@@ -1035,6 +1043,10 @@ main .prueba .recent-orders a{
         position: relative;
         margin-top: 1.8rem;
     }
+    aside .sidebar a:nth-last-child(2){
+        position: relative;
+        top: 0;
+    }
     main .prueba{
         margin-bottom: 1rem;
     }    
@@ -1123,9 +1135,15 @@ main .prueba .recent-orders a{
         width: 100%;
         height: 3.4rem;
     }
-    aside .sidebar a:last-child{
+    /* salir */
+    aside .sidebar a:nth-last-child(1){
         position: absolute;
         bottom: 5rem;
+    }
+    aside .sidebar a:nth-last-child(2){
+
+       position: absolute;
+        top: 26rem;
     }
     aside .close{
         display: inline-block;

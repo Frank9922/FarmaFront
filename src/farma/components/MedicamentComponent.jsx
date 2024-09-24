@@ -1,4 +1,5 @@
 import PropTypes from 'prop-types';
+import { NavLink } from 'react-router-dom';
 
 
 export const MedicamentComponent = ( {medicament, openPopup, handleDelete, updateSkip, } ) => {
@@ -28,6 +29,9 @@ export const MedicamentComponent = ( {medicament, openPopup, handleDelete, updat
             {medicament.accion_teraupetica}
 
           </div>
+          <div>
+            <NavLink to={`/medicamento/${medicament.name}`}>Mas info...</NavLink>
+          </div>
         </div>
         <div className="close-farm" id="close-farm-btn">
           <span onClick={ () => onDelete(medicament.id) } className="material-symbols-outlined">close</span>
@@ -36,7 +40,7 @@ export const MedicamentComponent = ( {medicament, openPopup, handleDelete, updat
     ) : (
       // Renderiza esto si medicament está vacío
       <div className="nada">
-      <h3>Click aqui para Buscar un Farmaco</h3>
+      <h3>Click aqui para buscar un Farmaco</h3>
       <span onClick={openPopup} className="material-symbols-outlined pulse"></span>
     </div>
     )}

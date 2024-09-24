@@ -23,8 +23,8 @@ export const NavBar = () => {
 <aside style={{ display: menuOpen === 'true' ? 'block' : '' }}>
     <div className="top">
       <div className="logo">
-        <img src="log3-removebg-preview.png" alt="" />
-        <h2 className=""><span className="danger">LOGO</span></h2>
+        {/* <img src="" alt="" /> */}
+        <h2 className="" ><span className="danger">FarmaCheck</span></h2>
       </div>
       <div className="close" id="close-btn" onClick={closeMenu}>
         <span className="material-symbols-outlined">close</span>
@@ -39,6 +39,10 @@ export const NavBar = () => {
           <span className="material-symbols-outlined">syringe</span>
            {/* vaccines  */}
           <h3>Farmacos</h3>
+        </NavLink>
+        <NavLink to='/about' className={({ isActive }) => (isActive ? 'active' : '')}>
+          <span className="material-symbols-outlined">info</span>
+          <h3>Acerca de</h3>
         </NavLink>
         <a onClick={onLogout}>
           <span className="material-symbols-outlined">logout</span>
