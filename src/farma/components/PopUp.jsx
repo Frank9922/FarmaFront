@@ -60,5 +60,9 @@ export const PopUp = ({onClose, farmacos, loadOptions, inputValue, onSelect}) =>
 }
 
 PopUp.propTypes = {
-    onClose : PropTypes.func
+    onClose : PropTypes.func,
+    farmacos: PropTypes.array,
+    loadOptions: PropTypes.func,
+    inputValue: PropTypes.bool,
+    onSelect: PropTypes.func
 }

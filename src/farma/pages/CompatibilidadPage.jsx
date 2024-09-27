@@ -35,14 +35,13 @@ export const CompatibilidadPage = () => {
   const [inputValue] = useState(null)
 
 
-
-
   const loadOptions = async(searchValue, callback) => {
 
 
     const filterOptions = data.farmacos.filter(farmaco => farmaco.name.toLocaleLowerCase().includes(searchValue.toLocaleLowerCase()))
 
     callback(filterOptions)
+
 
   }
 
@@ -66,7 +65,7 @@ export const CompatibilidadPage = () => {
 
   const [skip, setskip] = useState(true)
 
-  const { data: compa, isFetching, error } = useGetCompaQuery(farmacos, { skip: skip});
+  const { data: compa, isFetching } = useGetCompaQuery(farmacos, { skip: skip});
 
   const handleCompa = () => {
 
@@ -83,7 +82,7 @@ export const CompatibilidadPage = () => {
         dispatch(setHistorial(compa));
       }
 
-  }, [isFetching, compa, skip])
+  }, [isFetching, compa, skip, dispatch])
 
   const firstMedicament = farmacos.length > 0 ? farmacos[0] : null;
   const secondMedicament = farmacos.length > 1 ? farmacos[1] : null;
@@ -91,6 +90,8 @@ export const CompatibilidadPage = () => {
  
   return (
     <FarmaLayout>
+      <>
+      
           <div className="search">
 
             <h1>Compatibilidad</h1>
@@ -131,10 +132,8 @@ export const CompatibilidadPage = () => {
           }
           </div>
 
-          
-
           {isPopupOpen && <PopUp farmacos={farmacos} inputValue={inputValue} loadOptions={loadOptions} onClose={closePopup} onSelect={onSelect} />}
-
+      </>
     </FarmaLayout>
   )
 }

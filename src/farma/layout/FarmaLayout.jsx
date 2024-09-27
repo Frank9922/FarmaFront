@@ -2,49 +2,42 @@ import PropTypes from 'prop-types';
 import { NavBar } from '../components/NavBar';
 import { RightComponent } from '../components/RightComponent';
 import { motion } from 'framer-motion';
-import { useState } from 'react';
 import { useDispatch } from 'react-redux';
-import { toggleMenu } from '../../store/slices/ui/uiSlice';
+import { toggleNavbar } from '../../store/slices/ui/uiSlice';
 
 
 export const FarmaLayout = ( {children} ) => {
 
-  const [open, setopen] = useState(false)
-  
   const dispatch = useDispatch()
 
-
   const handleButtonClick = () => {
-      dispatch(toggleMenu());
+      dispatch(toggleNavbar());
   }
 
   return (
-
     
-<div className="container-farma">
-       
-    <NavBar />
+        <div className="container-farma">
+              
+            <NavBar />
 
-        <main>
+                <main>
 
-          <motion.div
-            initial={{ opacity: 0 }}
-            animate={{ opacity: 1 }}
-            exit={{  transition: { duration: 0.7 } }}
-            transition={{ duration: 0.7 }}
-            className="search">
+                  <motion.div
+                    initial={{ opacity: 0 }}
+                    animate={{ opacity: 1 }}
+                    exit={{  transition: { duration: 0.7 } }}
+                    transition={{ duration: 0.7 }}
+                    className="search">
 
-            { children }
+                    { children }
 
-          </motion.div>
+                  </motion.div>
 
-        </main>
+                </main>
 
-      <RightComponent openMenu={handleButtonClick}/>
+                <RightComponent openMenu={handleButtonClick}/>
 
-</div>
-
-
+        </div>
 
   )
 }

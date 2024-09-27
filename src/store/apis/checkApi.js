@@ -39,6 +39,18 @@ export const checkApi = createApi({
             query: (name) => `api/farmaco/${name}`,
           }),
 
+        getInfoComparacionIa: builder.query({
+            query: (args) => {
+
+                const [farma1, farma2] = args
+
+                return {
+                    url: `api/ia/${farma1}/${farma2}`
+                }
+
+            }
+        })
+
     })
 })
-export const { useGetCompaQuery, useGetFarmacosQuery, useGetFarmacoQuery } = checkApi;
+export const { useGetCompaQuery, useGetFarmacosQuery, useGetFarmacoQuery, useGetInfoComparacionIaQuery } = checkApi;

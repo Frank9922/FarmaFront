@@ -65,6 +65,7 @@ export const LoginPage = () => {
                     <input 
                     type="email"
                     name="email"
+                    autoComplete="email"
                     value={email}
                     disabled={auth.estado === 'checking'}
                     onChange={onInputChange}
@@ -75,9 +76,9 @@ export const LoginPage = () => {
                     <input 
                     type="password" 
                     name="password"
+                    autoComplete="password"
                     disabled={auth.estado === 'checking'}
                     value={password}
-                    autoComplete="new-password"
                     onChange={onInputChange}
                     className={` ${!!passwordValid && formSubmitted ? 'error' : ''}`}
                     placeholder="Contraseña" 

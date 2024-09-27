@@ -1,6 +1,7 @@
 import PropTypes from 'prop-types';
-import { useSelector } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import { motion } from 'framer-motion';
+import { clearHistorial } from '../../store/slices/ui/uiSlice';
 
 
 
@@ -9,6 +10,8 @@ export const HistorialResultados = () => {
 
     const { historial } = useSelector(state => state.ui)
 
+    const dispatch = useDispatch();
+
 
     const color = (nombre) => {
 
@@ -16,6 +19,10 @@ export const HistorialResultados = () => {
         
         return string.replace(/\s/g, '')
 
+    }
+
+    const onButton = () => {
+        dispatch(clearHistorial())
     }
 
     function calcularTiempoTranscurrido(timestamp) {
@@ -56,7 +63,9 @@ export const HistorialResultados = () => {
 
         {
         historial.length > 0 ? (
-            historial.map((registro, index) => (
+          <>
+          
+            {historial.map((registro, index) => (
                 
             <motion.div             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
@@ -70,7 +79,13 @@ export const HistorialResultados = () => {
                     </div>
 
             </motion.div>
-            ))
+            ))},
+            <div>
+              <button onClick={onButton}>
+                Eliminar Historial
+              </button>
+            </div>
+        </>
         ) : (
     <p>Historial disponible cuando realice una comparación.</p>
   )

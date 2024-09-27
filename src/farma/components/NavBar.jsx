@@ -2,7 +2,8 @@ import { useDispatch, useSelector } from "react-redux"
 import { startLogout } from "../../store/slices/auth/thunks"
 import { NavLink } from "react-router-dom"
 import PropTypes from 'prop-types';
-import { toggleMenu } from "../../store/slices/ui/uiSlice";
+import { closeNavbar } from "../../store/slices/ui/uiSlice";
+import { useEffect } from "react";
 
 
 export const NavBar = () => {
@@ -16,8 +17,14 @@ export const NavBar = () => {
     }
 
     const closeMenu = () => {
-      dispatch(toggleMenu());
+      dispatch(closeNavbar());
     }
+
+    useEffect(() => {
+
+      dispatch(closeNavbar())
+
+    }, [dispatch])
 
   return (
 <aside style={{ display: menuOpen === 'true' ? 'block' : '' }}>

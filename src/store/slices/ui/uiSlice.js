@@ -2,10 +2,6 @@ import { createSlice } from '@reduxjs/toolkit';
 
 const historial = JSON.parse(localStorage.getItem('historial'));
 
-if(!historial) {
-    console.log('no existe historial ')   
-}
-
 export const uiSlice = createSlice({
     name: 'ui',
     initialState: {
@@ -29,8 +25,16 @@ export const uiSlice = createSlice({
             state.theme = state.theme === 'light' ? 'dark' : 'light';        
         },
 
-        toggleMenu: (state) => {
+        toggleNavbar: (state) => {
             state.menuOpen = state.menuOpen === 'true' ? 'false' : 'true';
+        },
+
+        openNavbar: (state) => {
+            state.menuOpen = 'true';
+        },
+
+        closeNavbar: (state) => {
+            state.menuOpen = 'false';
         },
 
         addHistorial: (state, { payload }) => {
@@ -39,6 +43,15 @@ export const uiSlice = createSlice({
             if (!existe) {
                 state.historial.push(payload);
             }
+        },
+
+        clearHistorial :(state) => {
+
+            state.historial = [];
+
+            localStorage.removeItem('historial');
+
+
         },
 
         openModal: (state, {payload}) => {
@@ -52,4 +65,4 @@ export const uiSlice = createSlice({
 
 
 // Action creators are generated for each case reducer function
-export const { toggleTheme, addHistorial, toggleMenu, loaderActive, loaderDisabled, openModal, closeModal} = uiSlice.actions;
+export const { toggleTheme, addHistorial, toggleNavbar, loaderActive, loaderDisabled, openNavbar, closeNavbar, clearHistorial} = uiSlice.actions;
