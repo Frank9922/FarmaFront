@@ -53,14 +53,13 @@ export const ResultadoComparacion = ({compa}) => {
                 <div className="progreso">
                     {
                         skip ? 
-                         <button onClick={onSumbit}>
+                        <div className="ia">
+                            <button className='btn' onClick={onSumbit}>
                             Consultar con IA
                             </button>
+                        </div>
                          : null
                     }
-
-
-
                 </div>
                 {
                     !skip ? 

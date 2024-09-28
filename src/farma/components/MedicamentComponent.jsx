@@ -29,8 +29,8 @@ export const MedicamentComponent = ( {medicament, openPopup, handleDelete, updat
             {medicament.accion_teraupetica}
 
           </div>
-          <div>
-            <NavLink to={`/medicamento/${medicament.name}`}>Mas info...</NavLink>
+          <div className='masInfo'>
+            <NavLink to={`/medicamento/${medicament.name}`}>Más información...</NavLink>
           </div>
         </div>
         <div className="close-farm" id="close-farm-btn">

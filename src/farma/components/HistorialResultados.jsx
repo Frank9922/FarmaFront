@@ -80,8 +80,8 @@ export const HistorialResultados = () => {
 
             </motion.div>
             ))},
-            <div>
-              <button onClick={onButton}>
+            <div className='elimHisto'>
+              <button className='btn' onClick={onButton}>
                 Eliminar Historial
               </button>
             </div>
