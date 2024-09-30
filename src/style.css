@@ -466,6 +466,7 @@ main .prueba .insights > div {
   box-shadow: var(--box-shadow);
   transition: all 300ms ease;
   height: auto;
+  min-height: 9rem;
 }
 main .prueba .insights > div:nth-child(1) {
   border-top-left-radius: var(--card-border-radius);
