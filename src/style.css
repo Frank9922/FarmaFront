@@ -52,6 +52,12 @@
   font-weight: 500;
   font-family: poppins, sans-serif !important;
 }
+.farmaLink{
+  color:#7c89fd ;
+}
+.farmaLink:visited{
+color: #a1b1ff;
+}
 * {
   margin: 0;
   padding: 0;
@@ -61,7 +67,7 @@
   text-decoration: none !important;
   list-style: none;
   box-sizing: border-box;
-  transition: all 300ms ease;
+  transition: all 200ms ease;
 }
 html {
   font-size: 14px;
@@ -1043,6 +1049,8 @@ width: 100%;
   border-radius: 10px;
   box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.2);
   width: 75%;
+  color: white;
+  text-transform: capitalize;
 }
 
 .popup button {
@@ -1051,6 +1059,9 @@ width: 100%;
   cursor: pointer;
 }
 
+.ia-contenedor p{
+  color:  black;
+}
 /* Apply backdrop blur effect */
 .popup-container {
   backdrop-filter: blur(5px);

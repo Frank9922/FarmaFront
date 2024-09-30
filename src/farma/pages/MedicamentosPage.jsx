@@ -35,7 +35,7 @@ export const MedicamentosPage = () => {
                               
                               (farmaco)=>
                               <tr key={farmaco.id}>
-                                <td><NavLink to={`/medicamento/${farmaco.name}`}>{farmaco.name} </NavLink></td>
+                                <td><NavLink className="farmaLink" to={`/medicamento/${farmaco.name}`}>{farmaco.name} </NavLink></td>
                               </tr>)
                           
                           }

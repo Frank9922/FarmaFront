@@ -30,7 +30,7 @@ export const MedicamentComponent = ( {medicament, openPopup, handleDelete, updat
 
           </div>
           <div className='masInfo'>
-            <NavLink to={`/medicamento/${medicament.name}`}>Más información...</NavLink>
+            <NavLink className="farmaLink" to={`/medicamento/${medicament.name}`}>Más información...</NavLink>
           </div>
         </div>
         <div className="close-farm" id="close-farm-btn">
