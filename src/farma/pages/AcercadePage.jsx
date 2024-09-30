@@ -21,6 +21,7 @@ export const AcercadePage = () => {
                   href="http://revistapediatria.com.ar/wp-content/uploads/2021/04/GuiaAdministracionMedicamentos_3ED.-1.pdf"
                   target="_blank"
                   rel="noopener noreferrer"
+className="farmaLink"
                 >
                   Guia para la Administacion parental de medicamentos.
                 </a>
@@ -30,6 +31,7 @@ export const AcercadePage = () => {
                   href=" https://www.garrahan.gov.ar/PDFS/medicamentos/tablas/Compatibilidad_en_Y.pdf"
                   target="_blank"
                   rel="noopener noreferrer"
+className="farmaLink"
                 >
                   Hospital Garrahan - Compatibilidad de medicamentos
                   administrados. en Y.
@@ -40,6 +42,7 @@ export const AcercadePage = () => {
                   href="https://farmacia.garrahan.gov.ar/Vademecum/Busqueda"
                   target="_blank"
                   rel="noopener noreferrer"
+                  className="farmaLink"
                 >
                   Hospital Garrahan - Vademecum.
                 </a>
@@ -58,8 +61,7 @@ export const AcercadePage = () => {
           <p>
             Este proyecto fue originalmente concebido por{" "}
             <span>Lic. Saavedra</span>, y ha sido desarrollado por{" "}
-            <span>Franco Leiva </span>
-            en colaboración con <span>Elías Peralta</span>, quienes han trabajado
+            <span> <a href="" className="farmaLink">AwareWeb</a></span>, quienes han trabajado
             en conjunto para llevar esta idea a la realidad. Si tienes alguna
             pregunta, sugerencia o deseas más información, puedes contactarnos a
             través de nuestro correo electrónico: info@farmaCheck.com. Nos
