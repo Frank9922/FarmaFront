@@ -109,9 +109,16 @@ export const LoginPage = () => {
           </div>
 
           <div className="body-form">
-            <Link className="farmaLink" to="/register">
-              ¿No tienes cuenta? Create una
-            </Link>
+            <p>
+              <Link className="farmaLink" to="/recover">
+                ¿Olvidate tu contraseña?
+              </Link>
+            </p>
+            <p>
+              <Link className="farmaLink" to="/register">
+                ¿No tienes cuenta? Create una
+              </Link>
+            </p>
           </div>
         </form>
         <div className="alerta">
