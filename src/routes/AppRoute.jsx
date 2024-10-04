@@ -18,6 +18,7 @@ export const AppRoute = () => {
     const location = useLocation();
 
     if(loaderGeneral) {
+        
         return (<AnimatePresence>
                     <motion.div
                     initial={{opacity: 0}}

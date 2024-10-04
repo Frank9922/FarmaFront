@@ -39,7 +39,7 @@ export const PopUp = ({onClose, farmacos, loadOptions, inputValue, onSelect}) =>
         exit={{ scale: 0.8, opacity: 0 }}
         transition={{ duration: 0.3 }}
       >
-        <button onClick={onClose}>
+        <button style={{background:'transparent'}} onClick={onClose}>
         <span className="material-symbols-outlined">close</span>
         </button>
             <Select

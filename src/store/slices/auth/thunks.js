@@ -30,8 +30,6 @@ export const startRegister = ({ nombre, apellido, email, password}) => {
 
                         })
 
-                        console.log(data);
-
                         localStorage.setItem('token', data.token);
 
                         dispatch(login(data.user));
@@ -73,11 +71,12 @@ export const startLoginWithEmalAndPassword = ({email, password}) => {
 
                 } catch (e) {
 
-                         const { errors } = e.response.data;
 
-                        dispatch(errorResponse(errors));
+                         const { message } = e.response.data;
 
-                        }
+                        dispatch(errorResponse(message));
+
+                }
 
 
         }
@@ -97,23 +96,18 @@ export const insertFarmaco = (name) => {
 
 export const startLogout = () => {
         
-        const token = localStorage.getItem('token');
 
         return async(dispatch) => {
 
                 dispatch(loaderActive());
                 
                 try {
-                        const { data } = await api.get('/api/logout', {
-                                headers: {'Authorization' : `Bearer ${token}`}
-                        } )
 
                         localStorage.removeItem('token');
 
                         dispatch(logout());
 
 
-                        console.log(data);
                 } catch (e) {
 
                         console.log(e);

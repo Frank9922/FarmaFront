@@ -25,6 +25,8 @@ export const LoginPage = () => {
 
   const auth = useSelector((state) => state.auth);
 
+  const [errorLogin, setErrorLogin] = useState(auth?.errorResponse || false)
+
   const dispatch = useDispatch();
 
   const [formSubmitted, setFormSubmitted] = useState(false);
@@ -47,8 +49,10 @@ export const LoginPage = () => {
     if (!isFormValid) return;
 
     await dispatch(startLoginWithEmalAndPassword(formState));
-
+    
     if (auth.estado === estados.autenticado) navigate("/compatibilidad");
+
+    setErrorLogin(auth?.errorResponse)
   };
 
   return (
@@ -96,7 +100,15 @@ export const LoginPage = () => {
             >
               Por favor complete los campos obligatorios
             </div>
+
+                <div className={`error-form-alert ${errorLogin ? 'show' : ''}`}>
+
+                    {auth?.errorResponse}
+                    
+                </div>
           </div>
+
+
 
           <div className="footer-form">
             <button disabled={auth.estado === "checking"}>
@@ -114,11 +126,7 @@ export const LoginPage = () => {
             </Link>
           </div>
         </form>
-        <div className="alerta">
-          <div className="message">
-            <h5>Usuario o contraseña icorrectos</h5>
-          </div>
-        </div>
+
       </motion.div>
     </AuthLayout>
   );

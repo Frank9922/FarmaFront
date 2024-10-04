@@ -1077,6 +1077,27 @@ main .prueba .recent-orders a {
   backdrop-filter: blur(5px);
 }
 
+.popup .header-popup {
+  display:flex;
+
+}
+
+.popup .header-popup .title {
+  display: flex;
+  align-items: center;
+  gap: 1rem;  
+}
+
+.popup .header-popup .title h2 {
+  color: var(--dark);
+}
+.popup .body-popup {
+  padding: 10px 0px;
+  display:flex;
+  color: var(--dark);
+}
+
+
 /*Acerca de*/
 
 .acercadeText {

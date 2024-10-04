@@ -10,6 +10,7 @@ export const uiSlice = createSlice({
         historial: historial || [],
         menuOpen: 'false',
         modalAbm: null,
+        popupAlert: null,
 
     },
     reducers: {
@@ -36,6 +37,18 @@ export const uiSlice = createSlice({
         closeNavbar: (state) => {
             state.menuOpen = 'false';
         },
+
+            openPopUpAlert: (state) => {
+                state.popupAlert = true
+            },
+
+            closePopUpAlert: (state) => {
+                state.popupAlert = false
+            },
+
+            togglePopUpAlert: (state) => {
+                state.popupAlert = !state.popupAlert
+            },
 
         addHistorial: (state, { payload }) => {
 
@@ -65,4 +78,15 @@ export const uiSlice = createSlice({
 
 
 // Action creators are generated for each case reducer function
-export const { toggleTheme, addHistorial, toggleNavbar, loaderActive, loaderDisabled, openNavbar, closeNavbar, clearHistorial} = uiSlice.actions;
+export const { 
+    toggleTheme,
+    addHistorial,
+    toggleNavbar, 
+    loaderActive, 
+    loaderDisabled, 
+    openNavbar, 
+    closeNavbar, 
+    clearHistorial, 
+    openPopUpAlert, 
+    closePopUpAlert, 
+    togglePopUpAlert } = uiSlice.actions;
