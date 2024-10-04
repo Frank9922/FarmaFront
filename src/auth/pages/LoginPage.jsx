@@ -99,7 +99,7 @@ export const LoginPage = () => {
           </div>
 
           <div className="footer-form">
-            <button disabled={auth.estado === "checking"}>
+            <button className="btn" disabled={auth.estado === "checking"}>
               {auth.estado === "checking" ? (
                 <div className="spinner"></div>
               ) : (
