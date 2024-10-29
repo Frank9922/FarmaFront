@@ -1125,6 +1125,63 @@ main .prueba .recent-orders a {
   margin-right: 0.5rem;
   color: var(--dark);
 }
+/*ESTILOS DILUCION PA*/
+.containerFarm {
+  background: var(--principal);
+  padding: 10px;
+  border-radius: var(--card-border-radius);
+}
+.containerFarm .farmaco {
+  background: var(--color-white);
+  min-height: 10rem;
+  border-radius: var(--border-radius-3);
+  position: relative;
+}
+main .containerFarm .farmaco .nada {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  margin: auto;
+}
+main .containerFarm .farmaco h1 {
+  color: var(--dark);
+  text-align: center;
+}
+main .containerFarm .farmaco .nada h3 {
+  color: var(--dark);
+  margin: 1rem auto;
+  font-size: 1rem;
+}
+
+main .containerFarm .farmaco .nada span {
+  background-color: var(--principal);
+  color: var(--color-white);
+  border-radius: 50%;
+  font-size: 1.5rem;
+  margin-right: auto;
+  padding: 0.5rem;
+}
+main .containerFarm .farmaco .nada span::after {
+  content: "ads_click";
+  transition: all 300ms ease;
+  cursor: pointer;
+}
+main .containerFarm .farmaco .nada span::after {
+  content: "ads_click";
+  transition: all 300ms ease;
+  cursor: pointer;
+}
+main .containerFarm .farmaco .nada .pulse {
+  transform: scale(1);
+  animation: pulse 2s infinite;
+  margin: initial !important;
+}
+main .containerFarm .farmaco .close-farm {
+  position: absolute;
+  top: 0.2rem;
+  right: 1rem;
+}
 
 /* MEDIA QUERIES */
 @media screen and (max-width: 1200px) {
@@ -1193,6 +1250,7 @@ main .prueba .recent-orders a {
     text-align: center;
   }
 }
+
 /* MEDIA QUERIES PARA TABLETS yCELUS PA*/
 @media screen and (max-width: 768px) {
   .container-farma {
@@ -1277,6 +1335,9 @@ main .prueba .recent-orders a {
     margin: 0;
   }
   main .prueba .insights .nada span::after {
+    content: "touch_app";
+  }
+  main .containerFarm .farmaco .nada span::after {
     content: "touch_app";
   }
   .right {

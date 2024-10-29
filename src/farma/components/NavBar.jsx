@@ -52,6 +52,14 @@ export const NavBar = () => {
           <h3>Farmacos</h3>
         </NavLink>
         <NavLink
+          to="/dilution"
+          className={({ isActive }) => (isActive ? "active" : "")}
+        >
+          <span className="material-symbols-outlined">calculate</span>
+          {/* vaccines  */}
+          <h3>Dilución</h3>
+        </NavLink>
+        <NavLink
           to="/about"
           className={({ isActive }) => (isActive ? "active" : "")}
         >
