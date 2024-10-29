@@ -12,8 +12,8 @@ export const AcercadePage = () => {
             medicamentos. Esta herramienta está diseñada tanto para
             profesionales de la salud como para usuarios en general, ayudando a
             tomar decisiones informadas acerca del uso de fármacos. La
-            información que está basada en estudios clínicos revisados y
-            extraída de fuentes científicas de confianza, incluyendo bases de
+            información que ofrecemos está basada en estudios clínicos revisados
+            y extraída de fuentes científicas de confianza, incluyendo bases de
             datos oficiales de interacciones farmacológicas como :
             <ul>
               <li>
