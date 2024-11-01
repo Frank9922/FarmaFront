@@ -2,10 +2,13 @@ import { Link, useNavigate } from "react-router-dom";
 import { AuthLayout } from "../../farma/layout/AuthLayout";
 import { motion } from "framer-motion";
 import { useDispatch, useSelector } from "react-redux";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { useForm } from "../hooks/useForm";
 import { startLoginWithEmalAndPassword } from "../../store/slices/auth/thunks";
 import { estados } from "../../store/slices/auth/estados";
+import { PopUpAlert } from "../../farma/components/PopUpAlert";
+import { resetPasswordFalse } from "../../store/slices/ui/uiSlice";
+import { clearErrorResponse } from "../../store/slices/auth/authSlice";
 
 const initialForm = {
   email: "",
@@ -15,17 +18,45 @@ const initialForm = {
 const formValidation = {
   email: [(value) => value.includes("@"), "El correo debe tener una @"],
   password: [
-    (value) => value.length > 3,
+    (value) => value.length > 6,
     "La contraseña debe tener al menos 6 caracteres",
   ],
 };
 
 export const LoginPage = () => {
+
+  const dispatch = useDispatch();
+  
   const navigate = useNavigate();
+
+  const { errorResponse } = useSelector((state) => state.auth);
+
+  const [messageError, setMessageError] = useState(null);
+
+  const [hasShownError, setHasShownError] = useState(false);
 
   const auth = useSelector((state) => state.auth);
 
-  const dispatch = useDispatch();
+  const {resetPassword} = useSelector((state) => state.ui);
+
+  const [openPop, setOpenPop] = useState(resetPassword)
+
+  const onClosePopUp = () => {
+    setOpenPop(false);
+
+    dispatch(resetPasswordFalse())
+  }
+
+  useEffect(() => {
+
+    if (errorResponse && !hasShownError) {
+          setMessageError(errorResponse);
+          setHasShownError(true); 
+          dispatch(clearErrorResponse());
+    }
+
+  }, [errorResponse, hasShownError, dispatch])
+
 
   const [formSubmitted, setFormSubmitted] = useState(false);
 
@@ -47,8 +78,9 @@ export const LoginPage = () => {
     if (!isFormValid) return;
 
     await dispatch(startLoginWithEmalAndPassword(formState));
-
+    
     if (auth.estado === estados.autenticado) navigate("/compatibilidad");
+
   };
 
   return (
@@ -96,7 +128,15 @@ export const LoginPage = () => {
             >
               Por favor complete los campos obligatorios
             </div>
+
+                <div className={`error-form-alert ${messageError ? 'show' : ''}`}>
+
+                    {messageError}
+                    
+                </div>
           </div>
+
+
 
           <div className="footer-form">
             <button disabled={auth.estado === "checking"}>
@@ -113,13 +153,20 @@ export const LoginPage = () => {
               ¿No tienes cuenta? Create una
             </Link>
           </div>
-        </form>
-        <div className="alerta">
-          <div className="message">
-            <h5>Usuario o contraseña icorrectos</h5>
+
+          <div className="body-form">
+            <Link className="farmaLink" to="/reset-password">
+              ¿Ovlidaste tu contraseña?
+            </Link>
           </div>
-        </div>
+        </form>
+
+
+
       </motion.div>
+
+      <PopUpAlert isOpen={openPop} onClose={onClosePopUp} title='Contraseña Restablecida' body="Se restablecio correctamente su contraseña, inicie sesion con su nueva contraseña."/>
+
     </AuthLayout>
   );
 };

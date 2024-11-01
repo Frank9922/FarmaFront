@@ -1,5 +1,5 @@
 import { api } from "../../../api/api";
-import { loaderActive, loaderDisabled } from "../ui/uiSlice";
+import { loaderActive, loaderDisabled, loaderResetPasswordActive, loaderResetPasswordInactive, resetPasswordActive, resetPasswordFalse } from "../ui/uiSlice";
 import { checkingCredentials, errorResponse, login, logout } from "./authSlice"
 
 
@@ -29,8 +29,6 @@ export const startRegister = ({ nombre, apellido, email, password}) => {
                                 password: password
 
                         })
-
-                        console.log(data);
 
                         localStorage.setItem('token', data.token);
 
@@ -73,23 +71,13 @@ export const startLoginWithEmalAndPassword = ({email, password}) => {
 
                 } catch (e) {
 
-                         const { errors } = e.response.data;
 
-                        dispatch(errorResponse(errors));
+                         const { message } = e.response.data;
 
-                        }
+                        dispatch(errorResponse(message));
 
+                }
 
-        }
-
-}
-export const insertFarmaco = (name) => {
-
-        return async(dispatch) => {
-        
-                const algo = await api.post('/api/createFarma',{name,label:name})
-                
-                dispatch()
 
         }
 
@@ -97,23 +85,18 @@ export const insertFarmaco = (name) => {
 
 export const startLogout = () => {
         
-        const token = localStorage.getItem('token');
 
         return async(dispatch) => {
 
                 dispatch(loaderActive());
                 
                 try {
-                        const { data } = await api.get('/api/logout', {
-                                headers: {'Authorization' : `Bearer ${token}`}
-                        } )
 
                         localStorage.removeItem('token');
 
                         dispatch(logout());
 
 
-                        console.log(data);
                 } catch (e) {
 
                         console.log(e);
@@ -127,4 +110,77 @@ export const startLogout = () => {
 
         }
 
+}
+
+export const sendEmailResetPassword = (email) => {
+
+        return async(dispatch) => {
+
+                dispatch(loaderResetPasswordActive());
+
+                try {
+
+                        const algo = await api.post('/api/users/send-reset', {email});
+
+                        console.log(algo);
+
+                } catch(e) {
+                        
+                        console.log(e);
+
+                }
+                finally {
+                        dispatch(loaderResetPasswordInactive())
+                } 
+        }
+
+}
+
+export const verifyTokenPassword = (token) => {
+
+        return async(dispatch) => {
+                dispatch(loaderResetPasswordActive());
+
+
+                try{
+                        const algo = await api.post('/api/users/verify-token', {token})
+
+                        console.log(algo);
+
+                } catch(e) {
+
+                        console.log(e);
+                }
+                finally {
+                        dispatch(loaderResetPasswordInactive())
+
+                }
+        }
+
+}
+
+export const changeResetPassword = ({email, password}) => {
+
+        return async(dispatch) => {
+                dispatch(loaderResetPasswordActive())
+
+                try {
+
+                        const algo = await api.post('/api/users/change-password', {email, password});
+
+                        dispatch(resetPasswordActive())
+
+
+
+                } catch(e) {
+
+                        console.log(e)
+                        dispatch(resetPasswordFalse());
+                } finally {
+                        
+                        dispatch(loaderResetPasswordInactive())
+                }
+
+
+        }
 }

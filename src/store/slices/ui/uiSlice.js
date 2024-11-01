@@ -6,13 +6,24 @@ export const uiSlice = createSlice({
     name: 'ui',
     initialState: {
         loaderGeneral: false,
+        loaderResetPassword: false,
+        resetPassword:false,
         theme: 'light',
         historial: historial || [],
         menuOpen: 'false',
         modalAbm: null,
+        popupAlert: null,
 
     },
     reducers: {
+
+        resetPasswordActive: (state) => {
+            state.resetPassword =true;
+        },
+
+        resetPasswordFalse: (state) => {
+            state.resetPassword = false;
+        },
 
         loaderActive: (state) => {
             state.loaderGeneral = true;
@@ -20,6 +31,14 @@ export const uiSlice = createSlice({
         loaderDisabled: (state) => {
             state.loaderGeneral = false;
         },
+
+        loaderResetPasswordActive: (state) => {
+            state.loaderResetPassword = true;
+        },
+        loaderResetPasswordInactive: (state) => {
+            state.loaderResetPassword = false;
+        },
+
 
         toggleTheme: (state ) => {
             state.theme = state.theme === 'light' ? 'dark' : 'light';        
@@ -36,6 +55,18 @@ export const uiSlice = createSlice({
         closeNavbar: (state) => {
             state.menuOpen = 'false';
         },
+
+            openPopUpAlert: (state) => {
+                state.popupAlert = true
+            },
+
+            closePopUpAlert: (state) => {
+                state.popupAlert = false
+            },
+
+            togglePopUpAlert: (state) => {
+                state.popupAlert = !state.popupAlert
+            },
 
         addHistorial: (state, { payload }) => {
 
@@ -65,4 +96,19 @@ export const uiSlice = createSlice({
 
 
 // Action creators are generated for each case reducer function
-export const { toggleTheme, addHistorial, toggleNavbar, loaderActive, loaderDisabled, openNavbar, closeNavbar, clearHistorial} = uiSlice.actions;
+export const { 
+    toggleTheme,
+    addHistorial,
+    toggleNavbar, 
+    loaderActive, 
+    loaderDisabled, 
+    openNavbar, 
+    closeNavbar, 
+    clearHistorial, 
+    openPopUpAlert, 
+    closePopUpAlert, 
+    togglePopUpAlert,
+    loaderResetPasswordActive,
+    loaderResetPasswordInactive,
+    resetPasswordActive,
+    resetPasswordFalse } = uiSlice.actions;

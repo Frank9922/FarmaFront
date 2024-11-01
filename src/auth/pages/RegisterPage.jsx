@@ -5,6 +5,7 @@ import { useState } from "react"
 import { useForm } from "../hooks/useForm"
 import { useDispatch, useSelector } from "react-redux"
 import { startRegister } from "../../store/slices/auth/thunks"
+import { PopUpAlert } from "../../farma/components/PopUpAlert"
 
 
 const initialForm = {
@@ -30,6 +31,8 @@ export const RegisterPage = () => {
     const dispatch = useDispatch();
 
     const { estado, errorResponse } = useSelector(state => state.auth)
+
+    const [openPopUp, setOpenPopUp] = useState(false)
     
     const { nombre, nombreValid, apellido, apellidoValid, email, emailValid, password, passwordValid, re_password, re_passwordValid, formState, isFormValid, passwordMatch, onInputChange } = useForm(initialForm, formValidation)
 
@@ -45,7 +48,12 @@ export const RegisterPage = () => {
 
          await dispatch(startRegister(formState));
 
+         if(Object.keys(errorResponse).length > 0) setOpenPopUp(true);
 
+    }
+
+    const onClosePopUp = () => {
+        setOpenPopUp(false);
     }
 
 
@@ -53,6 +61,8 @@ export const RegisterPage = () => {
 
   return (
     <AuthLayout>
+        <>
+        
         <motion.div
         initial={{ x: "20%", opacity: 0 }}
         animate={{ x: 0, opacity: 1 }}
@@ -132,9 +142,7 @@ export const RegisterPage = () => {
                             Las contraseñas deben coincidir
                             </div>
 
-                            <div className={`error-form-alert ${errorResponse ? 'show' : ''}`}>
-                                {errorResponse?.email && `${errorResponse.email}`}  
-                            </div>
+
 
 
                 </div>
@@ -149,13 +157,11 @@ export const RegisterPage = () => {
                 </div>
 
         </form>
-            <div className="alerta">
-                <div className="message">
-                    <h5>Usuario o contraseña icorrectos</h5>
-                </div>
-            </div>
+        
         </motion.div>
 
+        <PopUpAlert isOpen={openPopUp} onClose={onClosePopUp} title={errorResponse?.email?.[0]} message="xd"/>
+        </>
     </AuthLayout>
   )
 }

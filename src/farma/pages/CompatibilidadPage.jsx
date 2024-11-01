@@ -6,11 +6,22 @@ import { PopUp } from "../components/PopUp";
 import { ResultadoComparacion } from "../components/ResultadoComparacion";
 import { useDispatch } from "react-redux";
 import { setHistorial } from "../../store/slices/ui/thunks";
+import { PopUpAlert } from "../components/PopUpAlert";
 
 export const CompatibilidadPage = () => {
 
   const [isPopupOpen, setIsPopupOpen] = useState(false);
+  const [farmacos, setFarmacos] = useState([])
+  const [inputValue] = useState(null)
+  const [skip, setskip] = useState(true)
+  const [onPopUpAlert, setOnPopUpAlert] = useState(false);
+
+  const firstMedicament = farmacos.length > 0 ? farmacos[0] : null;
+  const secondMedicament = farmacos.length > 1 ? farmacos[1] : null;
+
   const dispatch = useDispatch();
+  const { data } = useGetFarmacosQuery();
+  const { data: compa, isFetching, isError,error } = useGetCompaQuery(farmacos, { skip: skip});
 
   const openPopup = () => {
     setIsPopupOpen(true);
@@ -20,28 +31,15 @@ export const CompatibilidadPage = () => {
     setIsPopupOpen(false);
   };
 
-
-  const [farmacos, setFarmacos] = useState([])
-
-
   const updateSkip = (shouldSkip) => {
     setskip(shouldSkip);
   }
  
-  const { data } = useGetFarmacosQuery();
-
-
-  
-  const [inputValue] = useState(null)
-
-
   const loadOptions = async(searchValue, callback) => {
-
 
     const filterOptions = data.farmacos.filter(farmaco => farmaco.name.toLocaleLowerCase().includes(searchValue.toLocaleLowerCase()))
 
     callback(filterOptions)
-
 
   }
 
@@ -50,9 +48,7 @@ export const CompatibilidadPage = () => {
     if(farmacos.length <= 1) {
       setFarmacos([...farmacos, value])
       closePopup();
-
     }
-
 
   }
 
@@ -62,32 +58,33 @@ export const CompatibilidadPage = () => {
 
   }
 
-
-  const [skip, setskip] = useState(true)
-
-  const { data: compa, isFetching } = useGetCompaQuery(farmacos, { skip: skip});
-
   const handleCompa = () => {
 
     if(farmacos.length < 2) return 
     
     setskip(false);
 
+  }
 
+  const onClosePopUpAlert = () =>{
+    setOnPopUpAlert(false)
+    setskip(true)
+    setFarmacos([])
   }
 
   useEffect(() => {
 
-      if(!skip && !isFetching) {
+      if(!skip && !isFetching && compa) {
         dispatch(setHistorial(compa));
       }
 
-  }, [isFetching, compa, skip, dispatch])
+      if(isError) {
+        setOnPopUpAlert(true)
+      }
 
-  const firstMedicament = farmacos.length > 0 ? farmacos[0] : null;
-  const secondMedicament = farmacos.length > 1 ? farmacos[1] : null;
+  }, [isFetching, compa, skip, dispatch, isError])
 
- 
+
   return (
     <FarmaLayout>
       <>
@@ -133,6 +130,7 @@ export const CompatibilidadPage = () => {
           </div>
 
           {isPopupOpen && <PopUp farmacos={farmacos} inputValue={inputValue} loadOptions={loadOptions} onClose={closePopup} onSelect={onSelect} />}
+          <PopUpAlert isOpen={onPopUpAlert} onClose={onClosePopUpAlert} title={error?.data?.message} body='Por favor contacte con soporte para mas informacion.'/>
       </>
     </FarmaLayout>
   )
