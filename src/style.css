@@ -137,6 +137,7 @@ h5 {
   padding: 20px;
   background-color: var(--background);
   transition: all 300ms ease;
+  
 }
 .cont-form form .head-form {
   display: inline;
@@ -209,6 +210,7 @@ h5 {
   margin: auto;
 }
 .cont-form form .footer-form button {
+  font-family: poppins, sans-serif !important;
   padding: 10px 50px;
   margin-top: 20%;
   border: none;
@@ -1054,7 +1056,6 @@ main .prueba .recent-orders a {
   box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.2);
   width: 75%;
   color: white;
-  text-transform: capitalize;
 }
 .popup .select-options {
   background: white;

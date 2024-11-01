@@ -7,6 +7,7 @@ import { useCheckAuth } from "../auth/hooks/useCheckAuth"
 import { AnimatePresence } from "framer-motion"
 import { LoadingComponent } from "../farma/components/LoadingComponent"
 import { motion } from "framer-motion"
+import { ResetPassword } from "../auth/pages/ResetPassword"
 
 
 export const AppRoute = () => {
@@ -50,6 +51,7 @@ export const AppRoute = () => {
                                 <Route path="/*" element={<Navigate to="/login" />} />
                                 <Route path="/login" element={<LoginPage />} />
                                 <Route path="/register" element={<RegisterPage />} />
+                                <Route path="/reset-password" element={<ResetPassword />} />
                                 
                             </>
                         )

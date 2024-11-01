@@ -39,9 +39,13 @@ export const authSlice = createSlice({
             state.errorResponse= payload
         },
 
+        clearErrorResponse: (state) => {
+            state.errorResponse = null
+        }
+
     }
 });
 
 
 // Action creators are generated for each case reducer function
-export const { login, logout, checkingCredentials, errorResponse} = authSlice.actions;
+export const { login, logout, checkingCredentials, errorResponse, clearErrorResponse} = authSlice.actions;

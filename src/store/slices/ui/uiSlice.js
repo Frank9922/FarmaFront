@@ -6,6 +6,8 @@ export const uiSlice = createSlice({
     name: 'ui',
     initialState: {
         loaderGeneral: false,
+        loaderResetPassword: false,
+        resetPassword:false,
         theme: 'light',
         historial: historial || [],
         menuOpen: 'false',
@@ -15,12 +17,28 @@ export const uiSlice = createSlice({
     },
     reducers: {
 
+        resetPasswordActive: (state) => {
+            state.resetPassword =true;
+        },
+
+        resetPasswordFalse: (state) => {
+            state.resetPassword = false;
+        },
+
         loaderActive: (state) => {
             state.loaderGeneral = true;
         },
         loaderDisabled: (state) => {
             state.loaderGeneral = false;
         },
+
+        loaderResetPasswordActive: (state) => {
+            state.loaderResetPassword = true;
+        },
+        loaderResetPasswordInactive: (state) => {
+            state.loaderResetPassword = false;
+        },
+
 
         toggleTheme: (state ) => {
             state.theme = state.theme === 'light' ? 'dark' : 'light';        
@@ -89,4 +107,8 @@ export const {
     clearHistorial, 
     openPopUpAlert, 
     closePopUpAlert, 
-    togglePopUpAlert } = uiSlice.actions;
+    togglePopUpAlert,
+    loaderResetPasswordActive,
+    loaderResetPasswordInactive,
+    resetPasswordActive,
+    resetPasswordFalse } = uiSlice.actions;

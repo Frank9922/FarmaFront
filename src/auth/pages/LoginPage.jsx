@@ -2,10 +2,13 @@ import { Link, useNavigate } from "react-router-dom";
 import { AuthLayout } from "../../farma/layout/AuthLayout";
 import { motion } from "framer-motion";
 import { useDispatch, useSelector } from "react-redux";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { useForm } from "../hooks/useForm";
 import { startLoginWithEmalAndPassword } from "../../store/slices/auth/thunks";
 import { estados } from "../../store/slices/auth/estados";
+import { PopUpAlert } from "../../farma/components/PopUpAlert";
+import { resetPasswordFalse } from "../../store/slices/ui/uiSlice";
+import { clearErrorResponse } from "../../store/slices/auth/authSlice";
 
 const initialForm = {
   email: "",
@@ -15,19 +18,45 @@ const initialForm = {
 const formValidation = {
   email: [(value) => value.includes("@"), "El correo debe tener una @"],
   password: [
-    (value) => value.length > 3,
+    (value) => value.length > 6,
     "La contraseña debe tener al menos 6 caracteres",
   ],
 };
 
 export const LoginPage = () => {
+
+  const dispatch = useDispatch();
+  
   const navigate = useNavigate();
+
+  const { errorResponse } = useSelector((state) => state.auth);
+
+  const [messageError, setMessageError] = useState(null);
+
+  const [hasShownError, setHasShownError] = useState(false);
 
   const auth = useSelector((state) => state.auth);
 
-  const [errorLogin, setErrorLogin] = useState(auth?.errorResponse || false)
+  const {resetPassword} = useSelector((state) => state.ui);
 
-  const dispatch = useDispatch();
+  const [openPop, setOpenPop] = useState(resetPassword)
+
+  const onClosePopUp = () => {
+    setOpenPop(false);
+
+    dispatch(resetPasswordFalse())
+  }
+
+  useEffect(() => {
+
+    if (errorResponse && !hasShownError) {
+          setMessageError(errorResponse);
+          setHasShownError(true); 
+          dispatch(clearErrorResponse());
+    }
+
+  }, [errorResponse, hasShownError, dispatch])
+
 
   const [formSubmitted, setFormSubmitted] = useState(false);
 
@@ -52,7 +81,6 @@ export const LoginPage = () => {
     
     if (auth.estado === estados.autenticado) navigate("/compatibilidad");
 
-    setErrorLogin(auth?.errorResponse)
   };
 
   return (
@@ -101,9 +129,9 @@ export const LoginPage = () => {
               Por favor complete los campos obligatorios
             </div>
 
-                <div className={`error-form-alert ${errorLogin ? 'show' : ''}`}>
+                <div className={`error-form-alert ${messageError ? 'show' : ''}`}>
 
-                    {auth?.errorResponse}
+                    {messageError}
                     
                 </div>
           </div>
@@ -125,9 +153,20 @@ export const LoginPage = () => {
               ¿No tienes cuenta? Create una
             </Link>
           </div>
+
+          <div className="body-form">
+            <Link className="farmaLink" to="/reset-password">
+              ¿Ovlidaste tu contraseña?
+            </Link>
+          </div>
         </form>
 
+
+
       </motion.div>
+
+      <PopUpAlert isOpen={openPop} onClose={onClosePopUp} title='Contraseña Restablecida' body="Se restablecio correctamente su contraseña, inicie sesion con su nueva contraseña."/>
+
     </AuthLayout>
   );
 };
