@@ -14,8 +14,10 @@ export const AcercadePage = () => {
             tomar decisiones informadas acerca del uso de fármacos. La
             información que ofrecemos está basada en estudios clínicos revisados
             y extraída de fuentes científicas de confianza, incluyendo bases de
-            datos oficiales de interacciones farmacológicas como :
-            <ul>
+            datos oficiales de interacciones farmacológicas como : 
+            </p>
+
+            <ul >
               <li>
                 <a
                   href="http://revistapediatria.com.ar/wp-content/uploads/2021/04/GuiaAdministracionMedicamentos_3ED.-1.pdf"
@@ -23,7 +25,7 @@ export const AcercadePage = () => {
                   rel="noopener noreferrer"
                   className="farmaLink"
                 >
-                  Guia para la Administacion parental de medicamentos.
+                  Guia para la Administación parental de medicamentos.
                 </a>
               </li>
               <li>
@@ -48,7 +50,7 @@ export const AcercadePage = () => {
                 </a>
               </li>
             </ul>
-          </p>
+
           <p>
             Nuestro equipo se compromete a actualizar regularmente estos datos,
             manteniendo la información vigente de acuerdo con las últimas
@@ -60,7 +62,7 @@ export const AcercadePage = () => {
           </p>
           <p>
             Este proyecto fue originalmente concebido por{" "}
-            <span>Lic. Saavedra</span>, y ha sido desarrollado por{" "}
+            <span>Mgs. Saavedra Victor Hugo,</span> <i>Licenciado en enfermeria, Profesor de la carrera de enfermeria en la Universidad Nacional de Salta</i> ; y ha sido desarrollado por{" "}
             <span>
               {" "}
               <a href="" className="farmaLink">

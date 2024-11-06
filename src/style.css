@@ -1112,8 +1112,8 @@ main .prueba .recent-orders a {
 .acercadeText p {
   padding: 1rem;
 }
-.acercadeText p ul {
-  width: 55%;
+.acercadeText ul {
+  width: 70%;
   margin: auto;
   margin-top: 1rem;
 }
