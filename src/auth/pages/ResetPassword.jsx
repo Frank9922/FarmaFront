@@ -15,9 +15,6 @@ export const ResetPassword = () => {
 
     const {loaderResetPassword} = useSelector((state) => state.ui);
 
-    console.log(loaderResetPassword)
-
-
     const handleNext = () => {
         setStep((prev) => prev + 1);
     };

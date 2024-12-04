@@ -17,7 +17,8 @@ export const useCheckAuth = () => {
 
       if (!token) {
 
-        return dispatch(logout());
+        dispatch(logout());
+        return;
       }
 
       api.get('/api/user', {
@@ -28,7 +29,7 @@ export const useCheckAuth = () => {
     .then((response) => {
       
       dispatch(login(response.data.user));
-      return navigate('/compatibilidad');
+      navigate('/compatibilidad');
 
     })
 

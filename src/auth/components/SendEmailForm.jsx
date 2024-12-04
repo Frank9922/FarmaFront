@@ -1,6 +1,7 @@
-import { useDispatch } from "react-redux"
+import { useDispatch, useSelector } from "react-redux"
 import { sendEmailResetPassword } from "../../store/slices/auth/thunks";
 import { useForm } from "../hooks/useForm";
+import { useEffect, useState } from "react";
 
 
 const initialForm = {
@@ -17,21 +18,26 @@ export const SendEmailForm = ({onNext, setEmail}) => {
 
     const dispatch = useDispatch();
 
+    const { errorResponse } = useSelector(state => state.auth)
+
     const { email, emailValid, isFormValid, onInputChange} = useForm(initialForm, formValidation)
 
 
-    const onSubmit = (e) => {
+    const onSubmit = async(e) => {
+
         e.preventDefault();
 
         if(!isFormValid) return
 
-        dispatch(sendEmailResetPassword(email));
+        const result = await dispatch(sendEmailResetPassword(email));
 
-        setEmail(email)
+        if(!result.success) return;
+
+        setEmail(email);
 
         onNext();
-    }
 
+    }
 
   return (
     <form onSubmit={onSubmit}>
@@ -53,6 +59,13 @@ export const SendEmailForm = ({onNext, setEmail}) => {
             onChange={onInputChange}
             placeholder="email"
             />
+
+        </div>
+
+        <div className={`error-form-alert ${errorResponse ? 'show' : ''}`}>
+                  {
+                    JSON.stringify(errorResponse)
+                  }
 
         </div>
         

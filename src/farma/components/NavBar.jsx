@@ -3,16 +3,26 @@ import { startLogout } from "../../store/slices/auth/thunks";
 import { NavLink } from "react-router-dom";
 import PropTypes from "prop-types";
 import { closeNavbar } from "../../store/slices/ui/uiSlice";
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
+import { PopUpAlert } from "./PopUpAlert";
 
 export const NavBar = () => {
   const dispatch = useDispatch();
 
   const { menuOpen } = useSelector((state) => state.ui);
+  const [openPopUp, setOpenPopUp] = useState(false);
 
   const onLogout = () => {
     dispatch(startLogout());
   };
+
+  const onOpen = () => {
+    setOpenPopUp(true);
+  }
+
+  const onClose = () => {
+    setOpenPopUp(false);
+  }
 
   const closeMenu = () => {
     dispatch(closeNavbar());
@@ -22,7 +32,23 @@ export const NavBar = () => {
     dispatch(closeNavbar());
   }, [dispatch]);
 
+  useEffect(() => {
+
+    const handleEscape = (event) => {
+      if(event.key === 'Escape' ) {
+        onClose();
+      }
+    }
+
+    window.addEventListener('keydown', handleEscape)
+
+    return () => {
+        window.removeEventListener('keydown', handleEscape)
+    }
+  }, [])
+
   return (
+    <>
     <aside style={{ display: menuOpen === "true" ? "block" : "" }}>
       <div className="top">
         <div className="logo">
@@ -58,12 +84,24 @@ export const NavBar = () => {
           <span className="material-symbols-outlined">info</span>
           <h3>Acerca de</h3>
         </NavLink>
-        <a onClick={onLogout}>
+        <a onClick={onOpen}>
           <span className="material-symbols-outlined">logout</span>
           <h3>Salir</h3>
         </a>
       </div>
+      <PopUpAlert 
+      onClose={onClose} 
+      isOpen={openPopUp} 
+      title="¿Quiere cerrar sesion?" 
+      footer 
+      onEsquinaQuit={false} 
+      textFirstButton="Cerrar Sesion" 
+      textSecondButton="No"
+      firstOnClick={onClose}
+      secondOnClick={onLogout}
+      />
     </aside>
+    </>
   );
 };
 NavBar.propTypes = {

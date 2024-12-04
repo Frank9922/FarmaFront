@@ -121,17 +121,20 @@ export const sendEmailResetPassword = (email) => {
                 try {
 
                         const algo = await api.post('/api/users/send-reset', {email});
+                        dispatch(loaderResetPasswordInactive())
+                        
+                        return {success:true}
 
-                        console.log(algo);
 
                 } catch(e) {
                         
-                        console.log(e);
+                        dispatch(errorResponse(e.response.data.message))
+                        dispatch(loaderResetPasswordInactive())
+                        
+                        return {success:false}
 
                 }
-                finally {
-                        dispatch(loaderResetPasswordInactive())
-                } 
+
         }
 
 }
