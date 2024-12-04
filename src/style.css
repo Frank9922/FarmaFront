@@ -70,7 +70,6 @@
   text-decoration: none !important;
   list-style: none;
   box-sizing: border-box;
-  transition: all 200ms ease;
 }
 html {
   font-size: 14px;
@@ -209,6 +208,8 @@ h5 {
 .cont-form form .footer-form {
   margin: auto;
 }
+
+
 .cont-form form .footer-form button {
   font-family: poppins, sans-serif !important;
   padding: 10px 50px;
@@ -1096,6 +1097,37 @@ main .prueba .recent-orders a {
   padding: 10px 0px;
   display:flex;
   color: var(--dark);
+}
+
+.popup .footer-popup {
+  display: flex;
+  margin-left: auto;
+  white-space: nowrap;
+  gap:1.5rem
+}
+.popup .footer-popup button {
+  color: var(--dark);
+  width: 100%;
+  padding: 0.5rem 1rem;
+  border-radius: var(--border-radius-2);
+  font-size: 0.9rem;
+  font-family: poppins, sans-serif !important;
+  transition: all 0.35s ease-in-out;
+}
+
+.popup .footer-popup .cerrar {
+  background-color: var(--card-incompatible);
+}
+
+.popup .footer-popup .cerrar:hover {
+  background-color: var(--text-incompatible);
+}
+.popup .footer-popup .continuar {
+  background-color: var(--card-incierto);
+}
+
+.popup .footer-popup .continuar:hover {
+  background-color: var(--text-incierto);
 }
 
 

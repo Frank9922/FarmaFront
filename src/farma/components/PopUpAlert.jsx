@@ -2,8 +2,7 @@ import { motion } from 'framer-motion';
 import PropTypes from 'prop-types';
 
 
-export const PopUpAlert = ({title, body, footer, type, isOpen, onClose}) => {
-
+export const PopUpAlert = ({title, body, footer, type, isOpen, onClose, onEsquinaQuit = true, textFirstButton = 'No', textSecondButton = 'Si', firstOnClick, secondOnClick}) => {
 
   return (
     <>
@@ -33,14 +32,41 @@ export const PopUpAlert = ({title, body, footer, type, isOpen, onClose}) => {
           </h2>
             
           </div>
+          {
+
+          onEsquinaQuit ? 
+
+            (<button style={{background:'transparent'}} onClick={onClose}>
+              <span className="material-symbols-outlined">close</span>
+            </button>) 
+
+            : null
+
+          }
           
-          <button style={{background:'transparent'}} onClick={onClose}>
-            <span className="material-symbols-outlined">close</span>
-          </button>
+
+
         </div>
         <div className='body-popup'>
             {body}
-          </div>
+        </div>
+        {
+          footer ? (
+            <div className='footer-popup'>
+
+                <button className='continuar' onClick={firstOnClick}>
+                  {textSecondButton}
+                </button>
+
+                <button className='cerrar' onClick={secondOnClick}>
+                  {textFirstButton}
+                </button>
+
+            </div>
+          )
+          : null
+        }
+
 
       </motion.div>
 
@@ -54,8 +80,9 @@ export const PopUpAlert = ({title, body, footer, type, isOpen, onClose}) => {
 PopUpAlert.propTypes = {
   title: PropTypes.string,
   body: PropTypes.string,
-  footer: PropTypes.string,
-  message: PropTypes.string.isRequired,
+  footer: PropTypes.bool,
+  textFirstButton: PropTypes.string,
+  textSecondButton: PropTypes.string,
   type: PropTypes.oneOf(['success', 'error', 'warning', 'info']),
   cancelButton: PropTypes.shape({
     text: PropTypes.string,

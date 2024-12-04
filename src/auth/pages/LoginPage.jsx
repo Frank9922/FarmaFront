@@ -49,12 +49,11 @@ export const LoginPage = () => {
 
   useEffect(() => {
 
-    if (errorResponse && !hasShownError) {
+    if (errorResponse !== null) {
           setMessageError(errorResponse);
-          setHasShownError(true); 
+          setHasShownError(true);
           dispatch(clearErrorResponse());
     }
-
   }, [errorResponse, hasShownError, dispatch])
 
 
@@ -85,13 +84,13 @@ export const LoginPage = () => {
 
   return (
     <AuthLayout>
+      <>
       <motion.div
         initial={{ x: "20%", opacity: 0 }}
         animate={{ x: 0, opacity: 1 }}
         exit={{ x: "-20%", opacity: 0, transition: { duration: 0.2 } }}
         transition={{ delay: 0, duration: 0.2 }}
       >
-        {" "}
         <form onSubmit={onSumbit}>
           <div className="head-form">
             <h1>Inicio de Sesion</h1>
@@ -130,9 +129,10 @@ export const LoginPage = () => {
             </div>
 
                 <div className={`error-form-alert ${messageError ? 'show' : ''}`}>
+                  {
+                    JSON.stringify(messageError)
+                  }
 
-                    {messageError}
-                    
                 </div>
           </div>
 
@@ -161,11 +161,10 @@ export const LoginPage = () => {
           </div>
         </form>
 
-
-
-      </motion.div>
+      </motion.div> 
 
       <PopUpAlert isOpen={openPop} onClose={onClosePopUp} title='Contraseña Restablecida' body="Se restablecio correctamente su contraseña, inicie sesion con su nueva contraseña."/>
+      </>
 
     </AuthLayout>
   );
