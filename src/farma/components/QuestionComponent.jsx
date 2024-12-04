@@ -7,17 +7,17 @@ const QuestionComponent = () => {
             <h3>¿EL paciente esta restringuido de liquido?</h3>
             <div>
                 <div>
-                  
-                    <input type="checkbox" name="restring" value="si" />SI
-                  
+    
+                    <input type="radio" id='si' name="restring" value={true}/>
+                    <label htmlFor="si"> SI</label>
+
                 </div>
                 <div>
-                    <label htmlFor="">
-                        <input type="checkbox" name="restring" value="no"/>
-                        NO
-                    </label>
-                </div>
+                   
+                    <input type="radio" id='no' name="restring" value={false}/>
+                    <label htmlFor="no">NO</label>
 
+                </div>
             </div>
         </div>
     </>

@@ -65,7 +65,7 @@
   margin: 0;
   padding: 0;
   outline: 0;
-  appearance: none;
+  /* appearance: none; */
   border: 0;
   text-decoration: none !important;
   list-style: none;
@@ -91,19 +91,19 @@ h1 {
 }
 h2 {
   font-size: 1.4rem;
-  text-transform: capitalize;
+  /* text-transform: capitalize; */
 }
 h3 {
   font-size: 0.87rem;
-  text-transform: capitalize;
+  /* text-transform: capitalize; */
 }
 h4 {
   font-size: 0.8rem;
-  text-transform: capitalize;
+  /* text-transform: capitalize; */
 }
 h5 {
   font-size: 0.77rem;
-  text-transform: capitalize;
+  /* text-transform: capitalize; */
 }
 
 .container {
@@ -1179,7 +1179,151 @@ main .prueba .recent-orders a {
   margin-right: 0.5rem;
   color: var(--dark);
 }
+/*ESTILOS DILUCION PA*/
+.containerFarm {
+  background: var(--principal);
+  padding: 10px;
+  border-radius: 25px;
+  margin-top: 1.4rem;
+}
+.containerFarm .farmaco {
+  background: var(--color-white);
+  min-height: 10rem;
+  border-radius: var(--border-radius-3);
+  position: relative;
+  padding: 1rem 2rem;
+}
+main .containerFarm .farmaco .nada {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  margin: auto;
+}
+main .containerFarm .farmaco h1 {
+  color: var(--dark);
+  margin-top: -2.4rem;
+  width: auto;
+  text-align: center;
+}
+main .containerFarm .farmaco .nada h3 {
+  color: var(--dark);
+  margin: 1rem auto;
+  font-size: 1rem;
+}
 
+main .containerFarm .farmaco .nada span {
+  background-color: var(--principal);
+  color: var(--color-white);
+  border-radius: 50%;
+  font-size: 1.5rem;
+  margin-right: auto;
+  padding: 0.5rem;
+}
+main .containerFarm .farmaco .nada span::after {
+  content: "ads_click";
+  transition: all 300ms ease;
+  cursor: pointer;
+}
+main .containerFarm .farmaco .nada span::after {
+  content: "ads_click";
+  transition: all 300ms ease;
+  cursor: pointer;
+}
+main .containerFarm .farmaco .nada .pulse {
+  transform: scale(1);
+  animation: pulse 2s infinite;
+  margin: initial !important;
+}
+main .containerFarm .farmaco .sales span {
+  background: var(--principal);
+}
+main .containerFarm .farmaco > div span {
+  background: var(--principal);
+  padding: 0.5rem;
+  border-radius: 50%;
+  color: var(--color-white);
+  font-size: 1.5rem;
+  margin-right: auto;
+}
+main .containerFarm .farmaco .sales .close-farm,
+main .containerFarm .farmaco .expenses .close-farm {
+  position: absolute;
+  top: 1rem;
+  right: 1rem;
+}
+main .containerFarm .farmaco .sales .close-farm span,
+main .containerFarm .farmaco .expenses .close-farm span {
+  padding: 0;
+  font-size: 1.5rem;
+  margin-top: 0.5rem;
+  margin-right: 1rem;
+  cursor: pointer;
+  background: none;
+  color: var(--text-incierto);
+}
+main .containerFarm .farmaco .sales .middle .progreso {
+  color: var(--color-dark);
+  text-align: center;
+}
+main .containerFarm .farmaco .sales .middle .masInfo {
+  text-align: center;
+}
+.questionContent , .indicationContainer{
+  margin: 2rem auto;
+}
+.questionContent h3 , .indicationContainer h3{
+  text-align: center;
+}
+.questionContent div{
+  padding: 1rem;
+  display: flex;
+  justify-content: space-around;
+
+  font-size: 1.1rem;
+}
+/* IndicationComponenet */
+.indicationContainer h3{
+  margin-bottom: 1rem;
+}
+.indicationContainer{
+position: relative;
+}
+.indicationContainer div{
+  display: flex;
+  justify-content: center;
+  position: relative;
+align-items: center;
+}
+.indicationContainer div .inputCont{
+  width: 15rem;
+}
+.indicationContainer div .inputCont input{
+  padding: 0.5rem;
+  border: 1px solid var(--principal);
+  width: 100%;
+  border-radius: var(--border-radius-1);
+}
+.indicationContainer div .inputCont
+  input[type=number]::-webkit-inner-spin-button, 
+  input[type=number]::-webkit-outer-spin-button { 
+  -webkit-appearance: none; 
+  margin: 0; 
+}
+
+.indicationContainer div .inputCont label{
+  position: absolute;
+  right: 1px;
+  height: 100%;
+  align-content: center;
+  padding-left: 2px;
+  padding-right: 2px;
+  border-top-right-radius: var(--border-radius-1);
+  border-bottom-right-radius: var(--border-radius-1);
+  color: white;
+  background: var(--principal);
+
+}
 /* MEDIA QUERIES */
 @media screen and (max-width: 1200px) {
   .container-farma {

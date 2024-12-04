@@ -10,6 +10,7 @@ import { ResultadoComparacion } from "../components/ResultadoComparacion";
 import { useDispatch } from "react-redux";
 import { setHistorial } from "../../store/slices/ui/thunks";
 import QuestionComponent from "../components/QuestionComponent";
+import IndicationComponent from "../components/IndicationComponent";
 
 
 export const DilucionPage = () => {
@@ -107,7 +108,7 @@ export const DilucionPage = () => {
             onSelect={onSelect}
           />
         )}
-
+        <IndicationComponent/>
         <QuestionComponent/>
 
       </>
